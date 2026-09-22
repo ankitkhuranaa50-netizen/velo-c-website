@@ -148,7 +148,7 @@ export default function App() {
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <div className="relative min-h-[100dvh] w-full bg-white overflow-x-hidden font-sans selection:bg-[#00f0ff] selection:text-white">
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden font-sans selection:bg-red-500 selection:text-white" style={{ background: '#0a0a0d' }}>
 
       {/* ══════════════════════════════════════════════════════════════════════
           NAVBAR — fixed top bar with logo + 3-dot menu
@@ -161,13 +161,35 @@ export default function App() {
           boxShadow: '0 1px 24px rgba(0,0,0,0.35)',
         }}
       >
-        {/* Logo */}
-        <span
-          className="font-extrabold text-xl tracking-tight select-none"
-          style={{ background: 'linear-gradient(135deg,#00f0ff,#a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
-        >
-          velo c
-        </span>
+        {/* Logo + Nav Links */}
+        <div className="flex items-center gap-7">
+          <span
+            className="font-extrabold text-xl tracking-tight select-none"
+            style={{ background: 'linear-gradient(135deg,#ef4444,#f97316)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+          >
+            Velo C
+          </span>
+          <nav className="hidden sm:flex items-center gap-6">
+            <button
+              onClick={() => openOverlay('about')}
+              className="text-sm font-semibold text-gray-300 hover:text-red-500 transition-colors"
+            >
+              About
+            </button>
+            <button
+              onClick={() => openOverlay('contact')}
+              className="text-sm font-semibold text-gray-300 hover:text-red-500 transition-colors"
+            >
+              Contact
+            </button>
+            <button
+              onClick={() => openOverlay('profile')}
+              className="text-sm font-semibold text-gray-300 hover:text-red-500 transition-colors"
+            >
+              Dashboard
+            </button>
+          </nav>
+        </div>
 
         {/* Right side: user chip + 3-dot menu */}
         <div className="flex items-center gap-3" ref={menuRef}>
@@ -177,7 +199,7 @@ export default function App() {
             <button
               onClick={() => openOverlay('profile')}
               className="flex items-center gap-2 rounded-full px-3 py-1.5 transition-all hover:scale-105"
-              style={{ background: 'rgba(0,240,255,0.08)', border: '1px solid rgba(0,240,255,0.25)' }}
+              style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)' }}
             >
               <img
                 src={user.photoURL ?? ''}
@@ -185,7 +207,7 @@ export default function App() {
                 className="w-6 h-6 rounded-full object-cover"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
               />
-              <span className="text-sm font-semibold text-gray-700 max-w-[90px] truncate hidden sm:block">
+              <span className="text-sm font-semibold text-gray-200 max-w-[90px] truncate hidden sm:block">
                 {user.displayName?.split(' ')[0]}
               </span>
             </button>
@@ -200,9 +222,9 @@ export default function App() {
               aria-haspopup="menu"
               className="w-10 h-10 flex items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 select-none"
               style={{
-                background: isMenuOpen ? 'linear-gradient(135deg,#00f0ff,#a78bfa)' : 'rgba(0,240,255,0.08)',
-                border: '1px solid rgba(0,240,255,0.25)',
-                color: isMenuOpen ? '#000' : '#374151',
+                background: isMenuOpen ? 'linear-gradient(135deg,#ef4444,#f97316)' : 'rgba(239,68,68,0.08)',
+                border: '1px solid rgba(239,68,68,0.25)',
+                color: isMenuOpen ? '#fff' : '#e5e5e5',
                 fontSize: '22px',
                 lineHeight: 1,
                 fontWeight: 900,
@@ -218,42 +240,36 @@ export default function App() {
                 role="menu"
                 className="absolute right-0 top-[calc(100%+10px)] w-52 rounded-2xl overflow-hidden dropdown-in"
                 style={{
-                  background: 'rgba(255,255,255,0.95)',
+                  background: 'rgba(20,20,23,0.97)',
                   backdropFilter: 'blur(24px)',
-                  border: '1px solid rgba(0,240,255,0.25)',
-                  boxShadow: '0 8px 40px rgba(0,240,255,0.12), 0 4px 20px rgba(0,0,0,0.1)',
+                  border: '1px solid rgba(239,68,68,0.25)',
+                  boxShadow: '0 8px 40px rgba(239,68,68,0.12), 0 4px 20px rgba(0,0,0,0.4)',
                 }}
               >
-                {/* Auth item — changes based on login state */}
+                {/* Auth items — changes based on login state */}
                 {loading ? (
                   <div className="px-4 py-3 text-sm text-gray-400">Loading...</div>
                 ) : user ? (
+                  <DropdownItem
+                    icon={<FaSignOutAlt size={13} />}
+                    label="Logout"
+                    onClick={handleMenuLogout}
+                  />
+                ) : (
                   <>
                     <DropdownItem
-                      icon={<FaUser size={13} />}
-                      label="Your Profile"
-                      onClick={() => openOverlay('profile')}
+                      icon={<GoogleIcon />}
+                      label="Sign In"
+                      onClick={handleMenuLogin}
                       accent
                     />
                     <DropdownItem
-                      icon={<FaSignOutAlt size={13} />}
-                      label="Logout"
-                      onClick={handleMenuLogout}
+                      icon={<GoogleIcon />}
+                      label="Sign Up"
+                      onClick={handleMenuLogin}
                     />
                   </>
-                ) : (
-                  <DropdownItem
-                    icon={<GoogleIcon />}
-                    label="Login / Sign Up"
-                    onClick={handleMenuLogin}
-                    accent
-                  />
                 )}
-
-                <div style={{ borderTop: '1px solid rgba(0,240,255,0.1)', margin: '4px 0' }} />
-
-                <DropdownItem label="Contact" onClick={() => openOverlay('contact')} />
-                <DropdownItem label="About" onClick={() => openOverlay('about')} />
               </div>
             )}
           </div>
@@ -483,14 +499,6 @@ export default function App() {
                 >
                   Explore Downloads
                 </button>
-                <a
-                  href="https://t.me/Thecrackedx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-9 py-4 rounded-full font-extrabold text-white text-lg border-2 border-white/20 hover:border-red-500 transition-all"
-                >
-                  Join Telegram
-                </a>
               </div>
 
               {/* Stats row */}
@@ -588,17 +596,17 @@ export default function App() {
         {/* ══════════════ END DARK RED THEME BLOCK ══════════════ */}
 
         {/* SECTION 5.5 — ABOUT ME */}
-        <section className="px-6 pb-0 max-w-5xl mx-auto">
+        <section className="px-6 pb-0 max-w-5xl mx-auto" style={{ background: '#0a0a0d' }}>
           {/* top divider */}
-          <div style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }} className="mb-16" />
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }} className="mb-16" />
 
           <div
             className="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 rounded-3xl px-8 py-12 md:px-14 md:py-14"
             style={{
-              background: 'rgba(255,255,255,0.7)',
+              background: 'rgba(255,255,255,0.04)',
               backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(0,240,255,0.18)',
-              boxShadow: '0 4px 40px rgba(0,240,255,0.06), 0 2px 20px rgba(0,0,0,0.05)',
+              border: '1px solid rgba(239,68,68,0.18)',
+              boxShadow: '0 4px 40px rgba(239,68,68,0.06), 0 2px 20px rgba(0,0,0,0.2)',
             }}
           >
             {/* LEFT — Velo C YouTube channel logo */}
@@ -606,9 +614,9 @@ export default function App() {
               <div
                 className="about-channel-logo relative w-36 h-36 md:w-44 md:h-44 rounded-full flex items-center justify-center overflow-hidden"
                 style={{
-                  background: 'linear-gradient(145deg, #f8fafc, #dbeafe)',
-                  border: '2.5px solid rgba(0,240,255,0.5)',
-                  boxShadow: '0 0 0 7px rgba(148,163,184,0.08), 0 0 32px rgba(0,160,220,0.2)',
+                  background: 'linear-gradient(145deg, #1a1a1d, #0f0f11)',
+                  border: '2.5px solid rgba(239,68,68,0.5)',
+                  boxShadow: '0 0 0 7px rgba(239,68,68,0.06), 0 0 32px rgba(239,68,68,0.2)',
                 }}
               >
                 <img
@@ -617,18 +625,18 @@ export default function App() {
                   className="about-channel-logo-image absolute inset-0 h-full w-full object-cover"
                   draggable={false}
                 />
-                {/* polished blue-grey glass overlay */}
+                {/* polished dark glass overlay */}
                 <div
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.16), rgba(37,99,235,0.13))',
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -10px 24px rgba(15,23,42,0.12)',
+                    background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(239,68,68,0.1))',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -10px 24px rgba(0,0,0,0.3)',
                   }}
                 />
               </div>
               <span
                 className="text-xs font-semibold tracking-wide uppercase"
-                style={{ color: '#64748b', letterSpacing: '0.08em' }}
+                style={{ color: '#9ca3af', letterSpacing: '0.08em' }}
               >
                 Velo C YouTube Channel
               </span>
@@ -640,21 +648,21 @@ export default function App() {
               <span
                 className="inline-block text-xs font-bold uppercase tracking-widest w-fit mx-auto md:mx-0 px-3 py-1 rounded-full"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(0,240,255,0.1), rgba(167,139,250,0.1))',
-                  border: '1px solid rgba(167,139,250,0.3)',
-                  color: '#a78bfa',
+                  background: 'linear-gradient(135deg, rgba(239,68,68,0.12), rgba(249,115,22,0.12))',
+                  border: '1px solid rgba(249,115,22,0.3)',
+                  color: '#f97316',
                 }}
               >
                 About the Creator
               </span>
 
               <h2
-                className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-snug"
+                className="text-2xl md:text-3xl font-extrabold text-white leading-snug"
               >
                 The Mind Behind{' '}
                 <span
                   style={{
-                    background: 'linear-gradient(135deg, #00f0ff, #a78bfa)',
+                    background: 'linear-gradient(135deg, #ef4444, #f97316)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
@@ -663,7 +671,7 @@ export default function App() {
                 </span>
               </h2>
 
-              <p className="text-gray-500 text-[1.05rem] leading-relaxed max-w-lg">
+              <p className="text-gray-400 text-[1.05rem] leading-relaxed max-w-lg">
                 Passionate about building digital tools, gaming assets, and creator resources.
                 Velo C is my vision to provide 100% working, high-speed downloads to the global
                 creator community. Every file here is hand-picked, tested, and optimized for the
@@ -681,12 +689,12 @@ export default function App() {
                     key={s.label}
                     className="flex flex-col items-center px-5 py-2.5 rounded-2xl"
                     style={{
-                      background: 'rgba(0,240,255,0.05)',
-                      border: '1px solid rgba(0,240,255,0.15)',
+                      background: 'rgba(239,68,68,0.06)',
+                      border: '1px solid rgba(239,68,68,0.18)',
                     }}
                   >
-                    <span className="text-lg font-extrabold text-gray-900">{s.value}</span>
-                    <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide">{s.label}</span>
+                    <span className="text-lg font-extrabold text-white">{s.value}</span>
+                    <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -694,34 +702,34 @@ export default function App() {
           </div>
 
           {/* bottom divider */}
-          <div style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }} className="mt-16" />
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }} className="mt-16" />
         </section>
 
         {/* SECTION 5.7 — ADVERTISEMENT BOX */}
-        <section className="px-6 pb-0 max-w-5xl mx-auto">
+        <section className="px-6 pb-0 max-w-5xl mx-auto" style={{ background: '#0a0a0d' }}>
           <div className="mt-0 mb-16">
             {/* 16:9 aspect-ratio wrapper */}
             <div className="relative w-full" style={{ paddingBottom: 'calc(9/16 * 100%)' }}>
               <div
                 className="absolute inset-0 rounded-3xl overflow-hidden flex flex-col items-center justify-center gap-3"
                 style={{
-                  background: 'rgba(255,255,255,0.55)',
+                  background: 'rgba(255,255,255,0.03)',
                   backdropFilter: 'blur(18px)',
-                  border: '1.5px dashed rgba(0,240,255,0.55)',
-                  boxShadow: '0 0 32px rgba(0,240,255,0.1), 0 4px 30px rgba(0,0,0,0.05)',
+                  border: '1.5px dashed rgba(239,68,68,0.4)',
+                  boxShadow: '0 0 32px rgba(239,68,68,0.08), 0 4px 30px rgba(0,0,0,0.2)',
                 }}
               >
                 {/* gradient overlay */}
                 <div
                   className="absolute inset-0 rounded-3xl pointer-events-none"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(167,139,250,0.07) 0%, rgba(0,240,255,0.07) 100%)',
+                    background: 'linear-gradient(135deg, rgba(249,115,22,0.06) 0%, rgba(239,68,68,0.06) 100%)',
                   }}
                 />
                 {/* content */}
                 <span className="relative text-3xl md:text-5xl select-none">📢</span>
                 <p
-                  className="relative font-extrabold text-xl md:text-3xl tracking-tight text-gray-800 text-center px-4"
+                  className="relative font-extrabold text-xl md:text-3xl tracking-tight text-gray-200 text-center px-4"
                 >
                   Advertisement Space
                 </p>
@@ -739,17 +747,17 @@ export default function App() {
                 </p>
                 {/* corner accent dots */}
                 <span className="absolute top-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(0,240,255,0.4)' }} />
-                <span className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(167,139,250,0.4)' }} />
-                <span className="absolute bottom-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(167,139,250,0.4)' }} />
-                <span className="absolute bottom-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(0,240,255,0.4)' }} />
+                <span className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(249,115,22,0.4)' }} />
+                <span className="absolute bottom-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(249,115,22,0.4)' }} />
+                <span className="absolute bottom-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(239,68,68,0.4)' }} />
               </div>
             </div>
           </div>
         </section>
 
         {/* SECTION 6 — TRUSTED COMPANIES MARQUEE */}
-        <section className="w-full overflow-hidden bg-gray-50/50 py-16 border-y border-gray-100">
-          <h3 className="text-2xl font-bold text-center text-gray-800 mb-12">
+        <section className="w-full overflow-hidden py-16 border-y" style={{ background: '#0a0a0d', borderColor: 'rgba(255,255,255,0.08)' }}>
+          <h3 className="text-2xl font-bold text-center text-white mb-12">
             🏆 Trusted by Global Companies
           </h3>
           <div className="relative w-full flex whitespace-nowrap overflow-hidden mask-fade-edges">
@@ -770,8 +778,8 @@ export default function App() {
       <footer
         className="w-full px-6 py-10 md:py-12"
         style={{
-          borderTop: '1px solid rgba(0,0,0,0.07)',
-          background: 'rgba(255,255,255,0.85)',
+          borderTop: '1px solid rgba(255,255,255,0.08)',
+          background: '#0a0a0d',
           backdropFilter: 'blur(12px)',
         }}
       >
@@ -781,9 +789,9 @@ export default function App() {
           <div className="flex flex-col items-center md:items-start gap-1.5 text-center md:text-left">
             <span
               className="font-extrabold text-base tracking-tight"
-              style={{ background: 'linear-gradient(135deg,#00f0ff,#a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+              style={{ background: 'linear-gradient(135deg,#ef4444,#f97316)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
             >
-              velo c
+              Velo C
             </span>
             <p className="text-xs leading-relaxed" style={{ color: '#5c6a7a' }}>
               © 2026 Velo C. All rights reserved.
@@ -1473,19 +1481,13 @@ function CategoryCard({
       <h3 className="text-lg font-bold text-white">{title}</h3>
       <p className="text-sm text-gray-400 leading-relaxed -mt-2">{description}</p>
 
-      <div className="w-full flex flex-col gap-2 mt-2">
+      <div className="w-full mt-2">
         <button
           onClick={onClick}
           className="w-full py-2.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-[1.02] active:scale-95"
           style={{ background: 'linear-gradient(135deg, #ef4444, #f97316)' }}
         >
           {buttonLabel}
-        </button>
-        <button
-          onClick={onClick}
-          className="w-full py-2.5 rounded-xl font-bold text-sm text-gray-300 border border-white/15 hover:border-red-500 hover:text-white transition-all"
-        >
-          Explore More
         </button>
       </div>
     </div>

@@ -99,18 +99,18 @@ body {
   opacity: 0.26;
 }
 .hero-character-left::after {
-  background: rgba(0, 240, 255, 0.55);
+  background: rgba(239, 68, 68, 0.5);
 }
 .hero-character-right::after {
-  background: rgba(167, 139, 250, 0.55);
+  background: rgba(249, 115, 22, 0.5);
 }
 .hero-character-left img {
   animation: heroCharacterLeft 4.8s ease-in-out infinite;
-  filter: drop-shadow(0 14px 18px rgba(0, 240, 255, 0.16));
+  filter: drop-shadow(0 14px 18px rgba(239, 68, 68, 0.25));
 }
 .hero-character-right img {
   animation: heroCharacterRight 5.2s ease-in-out infinite;
-  filter: drop-shadow(0 14px 18px rgba(167, 139, 250, 0.2));
+  filter: drop-shadow(0 14px 18px rgba(249, 115, 22, 0.25));
 }
 @media (max-width: 767px) {
   .hero-character-left img,
