@@ -155,10 +155,10 @@ export default function App() {
       ══════════════════════════════════════════════════════════════════════ */}
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3"
         style={{
-          background: 'rgba(255,255,255,0.85)',
+          background: 'rgba(12,12,15,0.85)',
           backdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(0,240,255,0.15)',
-          boxShadow: '0 1px 24px rgba(0,0,0,0.06)',
+          borderBottom: '1px solid rgba(239,68,68,0.25)',
+          boxShadow: '0 1px 24px rgba(0,0,0,0.35)',
         }}
       >
         {/* Logo */}
@@ -430,6 +430,9 @@ export default function App() {
           MAIN PAGE CONTENT
       ══════════════════════════════════════════════════════════════════════ */}
       <main>
+        {/* ══════════════ DARK RED THEME BLOCK — HERO + SOCIAL + CARDS ══════════════ */}
+        <div style={{ background: 'radial-gradient(ellipse at top, #1a0a0d 0%, #0a0a0d 55%, #0a0a0d 100%)' }}>
+
         {/* SECTION 1+2+3 — HERO (characters left/right, existing content centered) */}
         <section className="pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[minmax(190px,1fr)_minmax(420px,1.4fr)_minmax(190px,1fr)] items-center gap-8 lg:gap-12">
@@ -446,36 +449,65 @@ export default function App() {
 
             {/* CENTER — existing heading, paragraph, and button */}
             <div className="order-2 flex flex-col items-center text-center gap-7">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold lowercase tracking-tight text-gray-900 leading-tight">
-                welcome to{' '}
+              <span className="uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-red-500">
+                Intelligence at Velocity
+              </span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight text-white leading-none">
+                Velo{' '}
                 <span
                   className="text-glow"
                   style={{
-                    background: 'linear-gradient(135deg, #00f0ff, #a78bfa)',
+                    background: 'linear-gradient(135deg, #ff3b3b, #ff8a3d)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  velo c
+                  C
                 </span>
               </h1>
 
-              <p className="text-[1.05rem] md:text-lg text-gray-500 leading-relaxed max-w-lg font-medium">
+              <p className="text-[1.05rem] md:text-lg text-gray-400 leading-relaxed max-w-lg font-medium">
                 The ultimate destination for high-speed direct downloads — premium gaming configs,
                 AI-powered editing tools, video assets, and exclusive packs for creators and gamers
                 worldwide. Every file verified, optimized, zero hassle.
               </p>
 
-              <button
-                onClick={() => openOverlay('explore')}
-                className="px-9 py-4 rounded-full font-extrabold text-white text-lg transition-all hover:scale-105 active:scale-95"
-                style={{
-                  background: 'linear-gradient(135deg, #00f0ff, #a78bfa)',
-                  boxShadow: '0 0 25px rgba(0,240,255,0.45), 0 0 50px rgba(167,139,250,0.25)',
-                }}
-              >
-                ✨ Explore More
-              </button>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <button
+                  onClick={() => openOverlay('explore')}
+                  className="px-9 py-4 rounded-full font-extrabold text-white text-lg transition-all hover:scale-105 active:scale-95"
+                  style={{
+                    background: 'linear-gradient(135deg, #ef4444, #f97316)',
+                    boxShadow: '0 0 25px rgba(239,68,68,0.45), 0 0 50px rgba(249,115,22,0.25)',
+                  }}
+                >
+                  Explore Downloads
+                </button>
+                <a
+                  href="https://t.me/Thecrackedx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-9 py-4 rounded-full font-extrabold text-white text-lg border-2 border-white/20 hover:border-red-500 transition-all"
+                >
+                  Join Telegram
+                </a>
+              </div>
+
+              {/* Stats row */}
+              <div className="flex flex-wrap items-center justify-center gap-8 pt-4">
+                <div className="text-center">
+                  <div className="text-2xl font-extrabold text-white">250K+</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Downloads</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-extrabold text-white">4.9★</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">User Rating</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-extrabold text-white">120+</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Premium Tools</div>
+                </div>
+              </div>
             </div>
 
             {/* RIGHT — purple creator character */}
@@ -492,12 +524,12 @@ export default function App() {
         </section>
 
         {/* SECTION 4 — SOCIAL ICONS */}
-        <section className="flex justify-center items-center gap-10 pb-28">
+        <section className="flex justify-center items-center gap-10 pb-20">
           <a
             href="https://t.me/Thecrackedx"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#00f0ff] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_20px_rgba(0,240,255,0.8)]"
+            className="text-red-500 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]"
           >
             <FaTelegram size={52} />
           </a>
@@ -505,24 +537,55 @@ export default function App() {
             href="https://youtube.com/@thecrackedx"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-800 transition-all duration-300 hover:scale-125 hover:text-[#a78bfa] hover:drop-shadow-[0_0_20px_rgba(167,139,250,0.8)]"
+            className="text-gray-300 transition-all duration-300 hover:scale-125 hover:text-red-500 hover:drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]"
           >
             <FaYoutube size={52} />
           </a>
         </section>
 
         {/* SECTION 5 — CATEGORY CARDS */}
-        <section className="px-6 pb-32 max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-12">
-            Here you will get all editing tools, mods, games &amp; resources
+        <section className="px-6 pb-28 max-w-6xl mx-auto">
+          <span className="block text-center uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-red-500 mb-3">
+            Categories
+          </span>
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+            Premium Files &amp; Tools Hub
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <CategoryCard emoji="🛠️" title="Editing Tools" onClick={() => handleCardClick('🛠️ Editing Tools')} />
-            <CategoryCard emoji="🎮" title="Games & Mods" onClick={() => handleCardClick('🎮 Games & Mods')} />
-            <CategoryCard emoji="🎬" title="Video Resources" onClick={() => handleCardClick('🎬 Video Resources')} />
-            <CategoryCard emoji="💎" title="Premium Packs" onClick={() => handleCardClick('💎 Premium Packs')} />
+          <p className="text-center text-gray-400 mb-12">Select a category and get high-speed secure downloads.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <CategoryCard
+              emoji="🎮"
+              title="Gaming APKs & Mods"
+              description="GFX tools, FPS configs, gaming setups and performance boosters."
+              buttonLabel="Open Gaming Hub"
+              onClick={() => handleCardClick('🎮 Gaming APKs & Mods')}
+            />
+            <CategoryCard
+              emoji="🛠️"
+              title="AI Editing Tools"
+              description="Premium unlocked video and photo editing apps."
+              buttonLabel="Open Editing Hub"
+              onClick={() => handleCardClick('🛠️ AI Editing Tools')}
+            />
+            <CategoryCard
+              emoji="🎬"
+              title="Video Resources"
+              description="High-quality video assets, sound effects and creator resources."
+              buttonLabel="Open Video Hub"
+              onClick={() => handleCardClick('🎬 Video Resources')}
+            />
+            <CategoryCard
+              emoji="💎"
+              title="Premium Packs"
+              description="Exclusive premium packs and bundles for creators and gamers."
+              buttonLabel="Open Premium Hub"
+              onClick={() => handleCardClick('💎 Premium Packs')}
+            />
           </div>
         </section>
+
+        </div>
+        {/* ══════════════ END DARK RED THEME BLOCK ══════════════ */}
 
         {/* SECTION 5.5 — ABOUT ME */}
         <section className="px-6 pb-0 max-w-5xl mx-auto">
@@ -1380,15 +1443,52 @@ function PlaceholderSection({
   );
 }
 
-function CategoryCard({ emoji, title, onClick }: { emoji: string; title: string; onClick: () => void }) {
+function CategoryCard({
+  emoji,
+  title,
+  description,
+  buttonLabel,
+  onClick,
+}: {
+  emoji: string;
+  title: string;
+  description: string;
+  buttonLabel: string;
+  onClick: () => void;
+}) {
   return (
-    <button
-      onClick={onClick}
-      className="group w-full relative bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-10 flex flex-col items-center justify-center gap-6 transition-all duration-300 hover:-translate-y-3 hover:border-[#00f0ff] hover:shadow-[0_15px_40px_-10px_rgba(0,240,255,0.3)] shadow-lg"
+    <div
+      className="group w-full relative rounded-3xl p-7 flex flex-col items-start gap-4 transition-all duration-300 hover:-translate-y-2"
+      style={{
+        background: 'linear-gradient(160deg, rgba(30,10,12,0.9), rgba(15,15,17,0.9))',
+        border: '1px solid rgba(239,68,68,0.18)',
+      }}
     >
-      <div className="text-6xl drop-shadow-md group-hover:scale-110 transition-transform duration-300">{emoji}</div>
-      <h3 className="text-2xl font-bold text-gray-800 group-hover:text-[#00f0ff] transition-colors">{title}</h3>
-    </button>
+      <div
+        className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
+        style={{ background: 'linear-gradient(135deg, #ef4444, #f97316)' }}
+      >
+        {emoji}
+      </div>
+      <h3 className="text-lg font-bold text-white">{title}</h3>
+      <p className="text-sm text-gray-400 leading-relaxed -mt-2">{description}</p>
+
+      <div className="w-full flex flex-col gap-2 mt-2">
+        <button
+          onClick={onClick}
+          className="w-full py-2.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-[1.02] active:scale-95"
+          style={{ background: 'linear-gradient(135deg, #ef4444, #f97316)' }}
+        >
+          {buttonLabel}
+        </button>
+        <button
+          onClick={onClick}
+          className="w-full py-2.5 rounded-xl font-bold text-sm text-gray-300 border border-white/15 hover:border-red-500 hover:text-white transition-all"
+        >
+          Explore More
+        </button>
+      </div>
+    </div>
   );
 }
 
