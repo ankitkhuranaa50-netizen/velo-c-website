@@ -418,14 +418,116 @@ export default function App() {
 
             {/* ── ABOUT OVERLAY ── */}
             {activeOverlay === 'about' && (
-              <div className="w-full max-w-lg">
-                <PlaceholderSection
-                  icon="⚡"
-                  title="About Velo C"
-                  subtitle="About section coming soon"
-                  description="Velo C is the ultimate destination for high-speed direct downloads — gaming configs, AI editing tools, video assets, and premium packs for creators worldwide."
-                  accent="#a78bfa"
-                />
+              <div className="w-full max-w-2xl">
+                <div className="flex flex-col items-center text-center gap-4 mb-8">
+                  <div
+                    className="w-20 h-20 rounded-3xl flex items-center justify-center text-4xl shadow-lg"
+                    style={{ background: 'rgba(239,68,68,0.1)', border: '2px solid rgba(239,68,68,0.3)' }}
+                  >
+                    ⚡
+                  </div>
+                  <h2
+                    className="text-3xl font-extrabold"
+                    style={{
+                      background: 'linear-gradient(135deg, #ef4444, #f97316)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                    }}
+                  >
+                    About Velo C
+                  </h2>
+                  <p className="font-semibold text-gray-500">Intelligence at Velocity</p>
+                </div>
+
+                {/* Long-form about card */}
+                <div
+                  className="w-full rounded-3xl p-7 md:p-10 space-y-6 text-left"
+                  style={{
+                    background: 'rgba(239,68,68,0.03)',
+                    border: '1px solid rgba(239,68,68,0.18)',
+                    boxShadow: '0 4px 30px rgba(239,68,68,0.05)',
+                  }}
+                >
+                  <section className="space-y-2">
+                    <h3 className="text-lg font-extrabold text-gray-800">🚀 Our Story</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Velo C was born out of a simple frustration — every gamer and creator on the
+                      internet was tired of the same old story. You search for a gaming config, and
+                      you land on a broken link. You look for an editing tool, and you're bombarded
+                      with fake "download" buttons, five layers of ads, and shortened links that lead
+                      nowhere. We built Velo C to be the opposite of all that: one clean, fast,
+                      trustworthy hub where gamers, editors, and content creators could find exactly
+                      what they needed without wading through junk to get there.
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      What started as a small personal project — a single creator sharing configs and
+                      tools with a handful of friends on Telegram — slowly grew into something much
+                      bigger. Every file that got shared was tested first. Every tool was verified to
+                      actually work before it was posted. That one habit, doing the boring work of
+                      quality-checking everything, is what separates Velo C from the dozens of
+                      copy-paste download sites out there.
+                    </p>
+                  </section>
+
+                  <section className="space-y-2">
+                    <h3 className="text-lg font-extrabold text-gray-800">🎮 What We Offer</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Velo C is organized around four pillars. First, <strong>Gaming APKs &amp; Mods</strong> —
+                      GFX tools, FPS configs, sensitivity setups, and performance boosters for titles
+                      like BGMI, Free Fire, and Call of Duty Mobile, tuned to squeeze the most
+                      performance out of low and mid-range devices. Second, <strong>AI Editing Tools</strong> —
+                      unlocked and premium versions of the apps creators actually use every day, from
+                      CapCut and Remini to AI face-swap and enhancement tools, so editing doesn't cost
+                      a subscription fee. Third, <strong>Video Resources</strong> — sound effects, overlays,
+                      transitions, and B-roll assets that save editors hours of searching stock
+                      libraries. And fourth, <strong>Premium Packs</strong> — curated bundles that combine
+                      multiple resources into one download for creators who want everything in one go.
+                    </p>
+                  </section>
+
+                  <section className="space-y-2">
+                    <h3 className="text-lg font-extrabold text-gray-800">✅ Our Promise</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Every single file on Velo C goes through the same three checks before it's ever
+                      posted: does it download properly, does it actually work as described, and is it
+                      safe to install. We don't believe in "trust me bro" links. If something breaks or
+                      stops working, our community lets us know through Telegram and we either fix it
+                      or take it down — no dead links sitting around for months. Speed matters too:
+                      every download on Velo C is routed for high-speed access, because nobody should
+                      have to wait ten minutes for a five-minute file.
+                    </p>
+                  </section>
+
+                  <section className="space-y-2">
+                    <h3 className="text-lg font-extrabold text-gray-800">🌍 Community &amp; Vision</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Velo C isn't just a download site — it's slowly becoming a community. Thousands
+                      of gamers and creators from around the world check in regularly, not just to
+                      download something, but to see what's new, request tools they need, and share
+                      feedback that shapes what gets added next. That two-way relationship is the whole
+                      point. This platform grows because the people using it tell us what to build
+                      next, and we listen.
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      Looking ahead, the goal is simple: keep making Velo C the fastest, cleanest, and
+                      most reliable place on the internet to find gaming and creator tools — no
+                      clutter, no fake links, no nonsense. Whether you're a mobile gamer chasing better
+                      frame rates, a creator polishing your next video, or someone just discovering
+                      what's possible with AI-powered editing, Velo C is built for you. Every file
+                      verified. Every download optimized. Zero hassle. That's the promise, and that's
+                      what we intend to keep delivering — one update at a time.
+                    </p>
+                  </section>
+
+                  <div
+                    className="rounded-2xl p-4 text-center"
+                    style={{ background: 'rgba(239,68,68,0.06)', border: '1px dashed rgba(239,68,68,0.3)' }}
+                  >
+                    <p className="text-sm text-gray-500 italic">
+                      ✏️ Ye poora text placeholder hai — jab chaho, apni real story/details se replace kar sakte ho.
+                    </p>
+                  </div>
+                </div>
               </div>
             )}
           </div>
