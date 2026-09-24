@@ -166,7 +166,7 @@ export default function App() {
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-x-hidden font-sans selection:bg-red-500 selection:text-white" style={{ background: '#0a0a0d' }}>
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden font-sans selection:bg-blue-500 selection:text-white" style={{ background: '#0a0a0d' }}>
 
       {/* ══════════════════════════════════════════════════════════════════════
           NAVBAR — fixed top bar with logo + 3-dot menu
@@ -175,7 +175,7 @@ export default function App() {
         style={{
           background: 'rgba(12,12,15,0.85)',
           backdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(239,68,68,0.25)',
+          borderBottom: '1px solid rgba(59,130,246,0.25)',
           boxShadow: '0 1px 24px rgba(0,0,0,0.35)',
         }}
       >
@@ -183,26 +183,26 @@ export default function App() {
         <div className="flex items-center gap-7">
           <span
             className="font-extrabold text-xl tracking-tight select-none"
-            style={{ background: 'linear-gradient(135deg,#ef4444,#f97316)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+            style={{ background: 'linear-gradient(135deg,#3b82f6,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
           >
             Velo C
           </span>
           <nav className="hidden sm:flex items-center gap-6">
             <button
               onClick={() => document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm font-semibold text-gray-300 hover:text-red-500 transition-colors"
+              className="text-sm font-semibold text-gray-300 hover:text-blue-400 transition-colors"
             >
               About
             </button>
             <button
               onClick={() => openOverlay('contact')}
-              className="text-sm font-semibold text-gray-300 hover:text-red-500 transition-colors"
+              className="text-sm font-semibold text-gray-300 hover:text-blue-400 transition-colors"
             >
               Contact
             </button>
             <button
               onClick={() => openOverlay('profile')}
-              className="text-sm font-semibold text-gray-300 hover:text-red-500 transition-colors"
+              className="text-sm font-semibold text-gray-300 hover:text-blue-400 transition-colors"
             >
               Dashboard
             </button>
@@ -217,7 +217,7 @@ export default function App() {
             <button
               onClick={() => openOverlay('profile')}
               className="flex items-center gap-2 rounded-full px-3 py-1.5 transition-all hover:scale-105"
-              style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)' }}
+              style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.25)' }}
             >
               <img
                 src={user.photoURL ?? ''}
@@ -240,8 +240,8 @@ export default function App() {
               aria-haspopup="menu"
               className="w-10 h-10 flex items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 select-none"
               style={{
-                background: isMenuOpen ? 'linear-gradient(135deg,#ef4444,#f97316)' : 'rgba(239,68,68,0.08)',
-                border: '1px solid rgba(239,68,68,0.25)',
+                background: isMenuOpen ? 'linear-gradient(135deg,#3b82f6,#8b5cf6)' : 'rgba(59,130,246,0.08)',
+                border: '1px solid rgba(59,130,246,0.25)',
                 color: isMenuOpen ? '#fff' : '#e5e5e5',
                 fontSize: '22px',
                 lineHeight: 1,
@@ -260,8 +260,8 @@ export default function App() {
                 style={{
                   background: 'rgba(20,20,23,0.97)',
                   backdropFilter: 'blur(24px)',
-                  border: '1px solid rgba(239,68,68,0.25)',
-                  boxShadow: '0 8px 40px rgba(239,68,68,0.12), 0 4px 20px rgba(0,0,0,0.4)',
+                  border: '1px solid rgba(59,130,246,0.25)',
+                  boxShadow: '0 8px 40px rgba(59,130,246,0.12), 0 4px 20px rgba(0,0,0,0.4)',
                 }}
               >
                 {/* Auth items — changes based on login state */}
@@ -324,7 +324,7 @@ export default function App() {
                 activeOverlay === 'explore'
                   ? 'text-slate-300 hover:text-[#00ffcc]'
                   : activeOverlay === 'contact'
-                  ? 'text-gray-300 hover:text-red-500'
+                  ? 'text-gray-300 hover:text-blue-400'
                   : 'text-gray-700 hover:text-[#00f0ff]'
               }`}
             >
@@ -429,7 +429,7 @@ export default function App() {
                 <div className="flex flex-col items-center text-center gap-4 mb-6">
                   <div
                     className="w-20 h-20 rounded-3xl flex items-center justify-center text-4xl shadow-lg"
-                    style={{ background: 'rgba(239,68,68,0.1)', border: '2px solid rgba(239,68,68,0.3)' }}
+                    style={{ background: 'rgba(59,130,246,0.1)', border: '2px solid rgba(59,130,246,0.3)' }}
                   >
                     📬
                   </div>
@@ -437,7 +437,7 @@ export default function App() {
                     <h2
                       className="text-3xl font-extrabold mb-2"
                       style={{
-                        background: 'linear-gradient(135deg, #ef4444, #f97316)',
+                        background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                       }}
@@ -457,29 +457,29 @@ export default function App() {
                     placeholder="Your name (optional)"
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
-                    className="w-full rounded-2xl px-4 py-3.5 text-gray-200 placeholder-gray-500 outline-none focus:border-red-500 transition-colors"
-                    style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)' }}
+                    className="w-full rounded-2xl px-4 py-3.5 text-gray-200 placeholder-gray-500 outline-none focus:border-blue-500 transition-colors"
+                    style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.2)' }}
                   />
                   <input
                     type="email"
                     placeholder="Your email (so we can reply)"
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
-                    className="w-full rounded-2xl px-4 py-3.5 text-gray-200 placeholder-gray-500 outline-none focus:border-red-500 transition-colors"
-                    style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)' }}
+                    className="w-full rounded-2xl px-4 py-3.5 text-gray-200 placeholder-gray-500 outline-none focus:border-blue-500 transition-colors"
+                    style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.2)' }}
                   />
                   <textarea
                     placeholder="Describe your problem or feedback..."
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
                     rows={5}
-                    className="w-full rounded-2xl px-4 py-3.5 text-gray-200 placeholder-gray-500 outline-none focus:border-red-500 transition-colors resize-none"
-                    style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)' }}
+                    className="w-full rounded-2xl px-4 py-3.5 text-gray-200 placeholder-gray-500 outline-none focus:border-blue-500 transition-colors resize-none"
+                    style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.2)' }}
                   />
                   <button
                     onClick={handleContactSubmit}
                     className="w-full py-4 rounded-2xl font-extrabold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
-                    style={{ background: 'linear-gradient(135deg, #ef4444, #f97316)' }}
+                    style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
                   >
                     Send Message
                   </button>
@@ -492,7 +492,7 @@ export default function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-semibold"
-                    style={{ color: '#f97316' }}
+                    style={{ color: '#8b5cf6' }}
                   >
                     Telegram
                   </a>.
@@ -519,34 +519,35 @@ export default function App() {
           MAIN PAGE CONTENT
       ══════════════════════════════════════════════════════════════════════ */}
       <main>
-        {/* ══════════════ DARK RED THEME BLOCK — HERO + SOCIAL + CARDS ══════════════ */}
-        <div style={{ background: 'radial-gradient(ellipse at top, #1a0a0d 0%, #0a0a0d 55%, #0a0a0d 100%)' }}>
+        {/* ══════════════ BLUE-PURPLE THEME BLOCK — HERO + SOCIAL + CARDS ══════════════ */}
+        <div style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse at top, #10122b 0%, #0a0a14 55%, #0a0a14 100%)' }}>
 
-        {/* SECTION 1+2+3 — HERO (characters left/right, existing content centered) */}
-        <section className="pt-28 pb-16 px-6">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[minmax(190px,1fr)_minmax(420px,1.4fr)_minmax(190px,1fr)] items-center gap-8 lg:gap-12">
+        {/* decorative glow orbs */}
+        <div className="hero-glow-orb" style={{ width: 380, height: 380, top: -120, left: -80, background: 'radial-gradient(circle, rgba(59,130,246,0.35), transparent 70%)' }} />
+        <div className="hero-glow-orb" style={{ width: 420, height: 420, top: 80, right: -140, background: 'radial-gradient(circle, rgba(139,92,246,0.32), transparent 70%)', animationDelay: '2s' }} />
 
-            {/* LEFT — cyan gaming character */}
-            <div className="hero-character hero-character-left order-1 flex justify-center md:justify-end self-end">
-              <img
-                src="/character-left.png"
-                alt="Velo C gaming character"
-                className="w-[min(72vw,300px)] md:w-full max-w-[330px] h-auto object-contain select-none"
-                draggable={false}
-              />
+        {/* SECTION 1+2+3 — HERO (centered content with ambient animated orbs) */}
+        <section className="pt-28 pb-16 px-6" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-7">
+
+            {/* Decorative floating rings behind the title — replaces old character art */}
+            <div className="hero-orbit-wrap" aria-hidden="true">
+              <span className="hero-orbit-ring hero-orbit-ring-1" />
+              <span className="hero-orbit-ring hero-orbit-ring-2" />
+              <span className="hero-orbit-dot hero-orbit-dot-a" />
+              <span className="hero-orbit-dot hero-orbit-dot-b" />
+              <span className="hero-orbit-dot hero-orbit-dot-c" />
             </div>
 
-            {/* CENTER — existing heading, paragraph, and button */}
-            <div className="order-2 flex flex-col items-center text-center gap-7">
-              <span className="uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-red-500">
-                Intelligence at Velocity
-              </span>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight text-white leading-none">
+            <span className="hero-fade-1 uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-blue-400">
+              Intelligence at Velocity
+            </span>
+              <h1 className="hero-fade-2 text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight text-white leading-none">
                 Velo{' '}
                 <span
                   className="text-glow"
                   style={{
-                    background: 'linear-gradient(135deg, #ff3b3b, #ff8a3d)',
+                    background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
@@ -555,27 +556,26 @@ export default function App() {
                 </span>
               </h1>
 
-              <p className="text-[1.05rem] md:text-lg text-gray-400 leading-relaxed max-w-lg font-medium">
+              <p className="hero-fade-3 text-[1.05rem] md:text-lg text-gray-400 leading-relaxed max-w-lg font-medium">
                 The ultimate destination for high-speed direct downloads — premium gaming configs,
                 AI-powered editing tools, video assets, and exclusive packs for creators and gamers
                 worldwide. Every file verified, optimized, zero hassle.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-4">
+              <div className="hero-fade-4 flex flex-wrap items-center justify-center gap-4">
                 <button
-                  onClick={() => openOverlay('explore')}
-                  className="px-9 py-4 rounded-full font-extrabold text-white text-lg transition-all hover:scale-105 active:scale-95"
+                  onClick={() => setToast('🔒 Explore page is locked for now — coming soon!')}
+                  className="px-9 py-4 rounded-full font-extrabold text-white text-lg transition-all hover:scale-105 active:scale-95 flex items-center gap-2 opacity-70"
                   style={{
-                    background: 'linear-gradient(135deg, #ef4444, #f97316)',
-                    boxShadow: '0 0 25px rgba(239,68,68,0.45), 0 0 50px rgba(249,115,22,0.25)',
+                    background: 'linear-gradient(135deg, #4b5563, #374151)',
                   }}
                 >
-                  Explore Downloads
+                  🔒 Explore Downloads
                 </button>
               </div>
 
               {/* Stats row */}
-              <div className="flex flex-wrap items-center justify-center gap-8 pt-4">
+              <div className="hero-fade-4 flex flex-wrap items-center justify-center gap-8 pt-4">
                 <div className="text-center">
                   <div className="text-2xl font-extrabold text-white">250K+</div>
                   <div className="text-xs text-gray-500 uppercase tracking-wide">Downloads</div>
@@ -589,17 +589,6 @@ export default function App() {
                   <div className="text-xs text-gray-500 uppercase tracking-wide">Premium Tools</div>
                 </div>
               </div>
-            </div>
-
-            {/* RIGHT — purple creator character */}
-            <div className="hero-character hero-character-right order-3 flex justify-center md:justify-start self-end">
-              <img
-                src="/character-right.png"
-                alt="Velo C creator character"
-                className="w-[min(72vw,300px)] md:w-full max-w-[330px] h-auto object-contain select-none"
-                draggable={false}
-              />
-            </div>
 
           </div>
         </section>
@@ -610,7 +599,7 @@ export default function App() {
             href="https://t.me/Thecrackedx"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-red-500 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]"
+            className="text-blue-400 transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]"
           >
             <FaTelegram size={52} />
           </a>
@@ -618,7 +607,7 @@ export default function App() {
             href="https://youtube.com/@thecrackedx"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 transition-all duration-300 hover:scale-125 hover:text-red-500 hover:drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]"
+            className="text-gray-300 transition-all duration-300 hover:scale-125 hover:text-blue-400 hover:drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]"
           >
             <FaYoutube size={52} />
           </a>
@@ -626,7 +615,7 @@ export default function App() {
 
         {/* SECTION 5 — CATEGORY CARDS */}
         <section className="px-6 pb-28 max-w-6xl mx-auto">
-          <span className="block text-center uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-red-500 mb-3">
+          <span className="block text-center uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-blue-400 mb-3">
             Categories
           </span>
           <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-3">
@@ -670,14 +659,14 @@ export default function App() {
           <div className="flex flex-col items-center text-center gap-4 mb-8">
             <div
               className="w-20 h-20 rounded-3xl flex items-center justify-center text-4xl shadow-lg"
-              style={{ background: 'rgba(239,68,68,0.1)', border: '2px solid rgba(239,68,68,0.3)' }}
+              style={{ background: 'rgba(59,130,246,0.1)', border: '2px solid rgba(59,130,246,0.3)' }}
             >
               ⚡
             </div>
             <h2
               className="text-3xl font-extrabold"
               style={{
-                background: 'linear-gradient(135deg, #ef4444, #f97316)',
+                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -690,9 +679,9 @@ export default function App() {
           <div
             className="w-full rounded-3xl p-7 md:p-10 space-y-6 text-left"
             style={{
-              background: 'rgba(239,68,68,0.03)',
-              border: '1px solid rgba(239,68,68,0.18)',
-              boxShadow: '0 4px 30px rgba(239,68,68,0.05)',
+              background: 'rgba(59,130,246,0.03)',
+              border: '1px solid rgba(59,130,246,0.18)',
+              boxShadow: '0 4px 30px rgba(59,130,246,0.05)',
             }}
           >
             <section className="space-y-2">
@@ -782,8 +771,8 @@ export default function App() {
             style={{
               background: 'rgba(255,255,255,0.04)',
               backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(239,68,68,0.18)',
-              boxShadow: '0 4px 40px rgba(239,68,68,0.06), 0 2px 20px rgba(0,0,0,0.2)',
+              border: '1px solid rgba(59,130,246,0.18)',
+              boxShadow: '0 4px 40px rgba(59,130,246,0.06), 0 2px 20px rgba(0,0,0,0.2)',
             }}
           >
             {/* LEFT — Velo C YouTube channel logo */}
@@ -792,8 +781,8 @@ export default function App() {
                 className="about-channel-logo relative w-36 h-36 md:w-44 md:h-44 rounded-full flex items-center justify-center overflow-hidden"
                 style={{
                   background: 'linear-gradient(145deg, #1a1a1d, #0f0f11)',
-                  border: '2.5px solid rgba(239,68,68,0.5)',
-                  boxShadow: '0 0 0 7px rgba(239,68,68,0.06), 0 0 32px rgba(239,68,68,0.2)',
+                  border: '2.5px solid rgba(59,130,246,0.5)',
+                  boxShadow: '0 0 0 7px rgba(59,130,246,0.06), 0 0 32px rgba(59,130,246,0.2)',
                 }}
               >
                 <img
@@ -806,7 +795,7 @@ export default function App() {
                 <div
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(239,68,68,0.1))',
+                    background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(59,130,246,0.1))',
                     boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -10px 24px rgba(0,0,0,0.3)',
                   }}
                 />
@@ -825,9 +814,9 @@ export default function App() {
               <span
                 className="inline-block text-xs font-bold uppercase tracking-widest w-fit mx-auto md:mx-0 px-3 py-1 rounded-full"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(239,68,68,0.12), rgba(249,115,22,0.12))',
-                  border: '1px solid rgba(249,115,22,0.3)',
-                  color: '#f97316',
+                  background: 'linear-gradient(135deg, rgba(59,130,246,0.12), rgba(139,92,246,0.12))',
+                  border: '1px solid rgba(139,92,246,0.3)',
+                  color: '#8b5cf6',
                 }}
               >
                 About the Creator
@@ -839,7 +828,7 @@ export default function App() {
                 The Mind Behind{' '}
                 <span
                   style={{
-                    background: 'linear-gradient(135deg, #ef4444, #f97316)',
+                    background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
@@ -866,8 +855,8 @@ export default function App() {
                     key={s.label}
                     className="flex flex-col items-center px-5 py-2.5 rounded-2xl"
                     style={{
-                      background: 'rgba(239,68,68,0.06)',
-                      border: '1px solid rgba(239,68,68,0.18)',
+                      background: 'rgba(59,130,246,0.06)',
+                      border: '1px solid rgba(59,130,246,0.18)',
                     }}
                   >
                     <span className="text-lg font-extrabold text-white">{s.value}</span>
@@ -892,15 +881,15 @@ export default function App() {
                 style={{
                   background: 'rgba(255,255,255,0.03)',
                   backdropFilter: 'blur(18px)',
-                  border: '1.5px dashed rgba(239,68,68,0.4)',
-                  boxShadow: '0 0 32px rgba(239,68,68,0.08), 0 4px 30px rgba(0,0,0,0.2)',
+                  border: '1.5px dashed rgba(59,130,246,0.4)',
+                  boxShadow: '0 0 32px rgba(59,130,246,0.08), 0 4px 30px rgba(0,0,0,0.2)',
                 }}
               >
                 {/* gradient overlay */}
                 <div
                   className="absolute inset-0 rounded-3xl pointer-events-none"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(249,115,22,0.06) 0%, rgba(239,68,68,0.06) 100%)',
+                    background: 'linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(59,130,246,0.06) 100%)',
                   }}
                 />
                 {/* content */}
@@ -924,9 +913,9 @@ export default function App() {
                 </p>
                 {/* corner accent dots */}
                 <span className="absolute top-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(0,240,255,0.4)' }} />
-                <span className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(249,115,22,0.4)' }} />
-                <span className="absolute bottom-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(249,115,22,0.4)' }} />
-                <span className="absolute bottom-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(239,68,68,0.4)' }} />
+                <span className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(139,92,246,0.4)' }} />
+                <span className="absolute bottom-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(139,92,246,0.4)' }} />
+                <span className="absolute bottom-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(59,130,246,0.4)' }} />
               </div>
             </div>
           </div>
@@ -966,7 +955,7 @@ export default function App() {
           <div className="flex flex-col items-center md:items-start gap-1.5 text-center md:text-left">
             <span
               className="font-extrabold text-base tracking-tight"
-              style={{ background: 'linear-gradient(135deg,#ef4444,#f97316)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+              style={{ background: 'linear-gradient(135deg,#3b82f6,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
             >
               Velo C
             </span>
@@ -1162,12 +1151,12 @@ function ExploreMoreContent() {
 
   const slides = [
     {
-      eyebrow: 'EXCLUSIVE DROP',
-      title: 'Redeem Code',
-      description: 'Tap to reveal your placeholder redeem code.',
+      eyebrow: 'JUST LAUNCHED',
+      title: 'Welcome to Velo C',
+      description: 'Your new hub for gaming configs, AI tools & creator resources. More drops coming soon.',
       icon: '01',
       className: 'explore-slide-cyan',
-      action: () => setModal('redeem' as ExploreModal),
+      action: () => window.open('https://t.me/Thecrackedx', '_blank', 'noopener,noreferrer'),
     },
     {
       eyebrow: 'STAY CONNECTED',
@@ -1178,12 +1167,12 @@ function ExploreMoreContent() {
       action: () => window.open('https://t.me/Thecrackedx', '_blank', 'noopener,noreferrer'),
     },
     {
-      eyebrow: 'PRO EDITION',
-      title: 'Pro Config',
-      description: 'Open the placeholder details for the next config.',
+      eyebrow: 'HELP US GROW',
+      title: 'Suggest What You Need',
+      description: 'Tell us which configs or tools you want next — we\'ll add them first.',
       icon: '03',
       className: 'explore-slide-blue',
-      action: () => setModal('config' as ExploreModal),
+      action: () => setModal('suggestion' as ExploreModal),
     },
   ];
 
@@ -1646,12 +1635,12 @@ function CategoryCard({
       className="group w-full relative rounded-3xl p-7 flex flex-col items-start gap-4 transition-all duration-300 hover:-translate-y-2"
       style={{
         background: 'linear-gradient(160deg, rgba(30,10,12,0.9), rgba(15,15,17,0.9))',
-        border: '1px solid rgba(239,68,68,0.18)',
+        border: '1px solid rgba(59,130,246,0.18)',
       }}
     >
       <div
         className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-        style={{ background: 'linear-gradient(135deg, #ef4444, #f97316)' }}
+        style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
       >
         {emoji}
       </div>
@@ -1662,7 +1651,7 @@ function CategoryCard({
         <button
           onClick={onClick}
           className="w-full py-2.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-[1.02] active:scale-95"
-          style={{ background: 'linear-gradient(135deg, #ef4444, #f97316)' }}
+          style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
         >
           {buttonLabel}
         </button>
