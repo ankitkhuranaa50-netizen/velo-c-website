@@ -1434,49 +1434,20 @@ body {
   z-index: 0;
 }
 
-/* Decorative orbit rings — replaces old character art in the hero */
-.hero-orbit-wrap {
-  position: relative;
-  width: 96px;
-  height: 96px;
-  margin-bottom: 4px;
+/* Ambient flowing particle-wave background (hero) */
+.hero-wave {
+  animation: waveFlow 14s linear infinite;
 }
-.hero-orbit-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1.5px solid rgba(59, 130, 246, 0.35);
-  animation: orbitSpin 12s linear infinite;
-}
-.hero-orbit-ring-2 {
-  inset: 16px;
-  border-color: rgba(139, 92, 246, 0.4);
-  animation-duration: 8s;
-  animation-direction: reverse;
-}
-.hero-orbit-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.65);
-}
-.hero-orbit-dot-a { top: -4px; left: 50%; transform: translateX(-50%); animation: orbitFloat 3s ease-in-out infinite; }
-.hero-orbit-dot-b { bottom: 8px; left: 4px; animation: orbitFloat 3.6s ease-in-out infinite 0.4s; }
-.hero-orbit-dot-c { bottom: 8px; right: 4px; animation: orbitFloat 4.2s ease-in-out infinite 0.8s; }
+.hero-wave-2 { animation-duration: 18s; animation-direction: reverse; }
+.hero-wave-3 { animation-duration: 22s; }
+.hero-wave-4 { animation-duration: 16s; animation-direction: reverse; }
 
-@keyframes orbitSpin {
-  to { transform: rotate(360deg); }
-}
-@keyframes orbitFloat {
-  0%, 100% { transform: translateY(0); opacity: 0.7; }
-  50%      { transform: translateY(-6px); opacity: 1; }
+@keyframes waveFlow {
+  to { stroke-dashoffset: -400; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-fade-1, .hero-fade-2, .hero-fade-3, .hero-fade-4, .card-fade-in, .hero-glow-orb,
-  .hero-orbit-ring, .hero-orbit-ring-2, .hero-orbit-dot-a, .hero-orbit-dot-b, .hero-orbit-dot-c {
+  .hero-fade-1, .hero-fade-2, .hero-fade-3, .hero-fade-4, .card-fade-in, .hero-glow-orb, .hero-wave {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

@@ -526,18 +526,37 @@ export default function App() {
         <div className="hero-glow-orb" style={{ width: 380, height: 380, top: -120, left: -80, background: 'radial-gradient(circle, rgba(59,130,246,0.35), transparent 70%)' }} />
         <div className="hero-glow-orb" style={{ width: 420, height: 420, top: 80, right: -140, background: 'radial-gradient(circle, rgba(139,92,246,0.32), transparent 70%)', animationDelay: '2s' }} />
 
+        {/* Ambient flowing particle-wave background — behind all hero content */}
+        <svg
+          viewBox="0 0 1000 500"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 0,
+            pointerEvents: 'none',
+          }}
+        >
+          <defs>
+            <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
+              <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path className="hero-wave hero-wave-1" d="M-100,120 C100,60 250,180 400,110 C550,40 700,160 850,90 C950,50 1050,100 1100,120" stroke="url(#waveGrad)" strokeWidth="1.5" strokeDasharray="1,9" fill="none" />
+          <path className="hero-wave hero-wave-2" d="M-100,180 C120,240 260,120 420,190 C560,250 700,140 860,200 C960,240 1050,190 1100,180" stroke="url(#waveGrad)" strokeWidth="1.5" strokeDasharray="1,7" fill="none" opacity="0.7" />
+          <path className="hero-wave hero-wave-3" d="M-100,90 C150,150 300,70 450,130 C600,190 750,80 900,140 C1000,175 1060,140 1100,90" stroke="url(#waveGrad)" strokeWidth="1.5" strokeDasharray="1,11" fill="none" opacity="0.5" />
+          <path className="hero-wave hero-wave-4" d="M-100,230 C130,190 280,260 430,210 C580,160 730,240 880,200 C970,175 1050,200 1100,230" stroke="url(#waveGrad)" strokeWidth="1.5" strokeDasharray="1,8" fill="none" opacity="0.6" />
+        </svg>
+
         {/* SECTION 1+2+3 — HERO (centered content with ambient animated orbs) */}
         <section className="pt-28 pb-16 px-6" style={{ position: 'relative', zIndex: 1 }}>
           <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-7">
-
-            {/* Decorative floating rings behind the title — replaces old character art */}
-            <div className="hero-orbit-wrap" aria-hidden="true">
-              <span className="hero-orbit-ring hero-orbit-ring-1" />
-              <span className="hero-orbit-ring hero-orbit-ring-2" />
-              <span className="hero-orbit-dot hero-orbit-dot-a" />
-              <span className="hero-orbit-dot hero-orbit-dot-b" />
-              <span className="hero-orbit-dot hero-orbit-dot-c" />
-            </div>
 
             <span className="hero-fade-1 uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-blue-400">
               Intelligence at Velocity
