@@ -28,7 +28,7 @@ export default function App() {
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
 
-  const handleContactSubmit = () => {
+
     if (!contactMessage.trim()) {
       setToast('Please write your problem or feedback before sending.');
       return;
@@ -123,6 +123,33 @@ export default function App() {
 
   const handleCardClick = (title: string) => {
     setToast(`${title} will be added soon. Explore More already has the latest drops.`);
+  };
+
+  // Category Hub — the per-category page (Gaming APKs & Mods first, others follow later)
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [categorySearch, setCategorySearch] = useState('');
+  const [selectedHubItem, setSelectedHubItem] = useState<{ name: string; rating: string } | null>(null);
+
+  const categoryData: Record<string, { title: string; items: { name: string; rating: string }[] }> = {
+    gaming: {
+      title: '🎮 Gaming APKs & Mods',
+      items: [
+        // ▼▼▼ BLANK PLACEHOLDER SLOTS — replace name/rating with real content anytime ▼▼▼
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        // ▲▲▲ Add more { name: '...', rating: '...' } lines here for more slots ▲▲▲
+      ],
+    },
+  };
+
+  const openCategoryHub = (key: string) => {
+    setActiveCategory(key);
+    setCategorySearch('');
+    setSelectedHubItem(null);
   };
 
   const sendMessage = async () => {
@@ -505,6 +532,145 @@ export default function App() {
         </div>
       )}
 
+      {/* ══════════════════════════════════════════════════════════════════════
+          CATEGORY HUB — opens when a home page card's "Open ... Hub" button is tapped
+      ══════════════════════════════════════════════════════════════════════ */}
+      {activeCategory && categoryData[activeCategory] && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${categoryData[activeCategory].title} hub`}
+          className="fixed inset-0 z-[70] overflow-y-auto"
+          style={{ background: '#0a0a14' }}
+        >
+          <div className="max-w-3xl mx-auto px-5 py-6">
+
+            {/* Header — back button + card name */}
+            <div className="flex items-center justify-between mb-6">
+              <button
+                onClick={() => setActiveCategory(null)}
+                className="flex items-center gap-2 font-bold text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                <span className="text-xl">←</span> Back
+              </button>
+              <span
+                className="px-4 py-1.5 rounded-full text-sm font-bold text-white"
+                style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
+              >
+                {categoryData[activeCategory].title}
+              </span>
+            </div>
+
+            {/* Advertisement box (same style as home page) */}
+            <div className="relative w-full mb-8" style={{ paddingBottom: 'calc(9/16 * 100%)' }}>
+              <div
+                className="absolute inset-0 rounded-3xl overflow-hidden flex flex-col items-center justify-center gap-2"
+                style={{
+                  background: 'rgba(59,130,246,0.04)',
+                  border: '1.5px dashed rgba(59,130,246,0.35)',
+                }}
+              >
+                <span className="text-3xl">📢</span>
+                <p className="font-extrabold text-lg text-gray-300">Advertisement Space</p>
+                <p className="text-xs text-gray-500">Your brand could be here.</p>
+              </div>
+            </div>
+
+            {/* Search bar — filters items within this category */}
+            <div className="relative mb-6">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">🔍</span>
+              <input
+                type="text"
+                value={categorySearch}
+                onChange={(e) => setCategorySearch(e.target.value)}
+                placeholder={`Search in ${categoryData[activeCategory].title}...`}
+                className="w-full rounded-2xl pl-11 pr-4 py-3.5 text-gray-200 placeholder-gray-500 outline-none focus:border-blue-500 transition-colors"
+                style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.2)' }}
+              />
+            </div>
+
+            {/* Items grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {categoryData[activeCategory].items
+                .filter((item) => item.name.toLowerCase().includes(categorySearch.toLowerCase()))
+                .map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={() => setSelectedHubItem(item)}
+                    className="flex flex-col items-start gap-2 rounded-2xl p-4 text-left transition-all hover:scale-[1.03]"
+                    style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.18)' }}
+                  >
+                    <div
+                      className="w-full aspect-square rounded-xl flex flex-col items-center justify-center gap-1"
+                      style={{ background: 'rgba(59,130,246,0.06)', border: '1.5px dashed rgba(59,130,246,0.35)' }}
+                    >
+                      <span className="text-2xl text-blue-400/60">+</span>
+                      <span className="text-[9px] text-gray-500 font-semibold">LOGO</span>
+                    </div>
+                    <span className="font-bold text-gray-200 text-sm leading-tight">{item.name}</span>
+                    <span className="text-xs text-yellow-400 font-semibold">★ {item.rating}</span>
+                  </button>
+                ))}
+            </div>
+
+            {categoryData[activeCategory].items.filter((item) =>
+              item.name.toLowerCase().includes(categorySearch.toLowerCase())
+            ).length === 0 && (
+              <p className="text-center text-gray-500 mt-10">No results found.</p>
+            )}
+          </div>
+
+          {/* ── ITEM DETAIL PAGE — opens when a specific item card is tapped ── */}
+          {selectedHubItem && (
+            <div
+              role="dialog"
+              aria-modal="true"
+              className="fixed inset-0 z-[80] overflow-y-auto"
+              style={{ background: '#0a0a14' }}
+            >
+              <div className="max-w-2xl mx-auto px-5 py-6">
+                <button
+                  onClick={() => setSelectedHubItem(null)}
+                  className="flex items-center gap-2 font-bold text-gray-300 hover:text-blue-400 transition-colors mb-6"
+                >
+                  <span className="text-xl">←</span> Back
+                </button>
+
+                <div
+                  className="w-full aspect-video rounded-3xl flex flex-col items-center justify-center gap-2 mb-6"
+                  style={{ background: 'rgba(59,130,246,0.06)', border: '1.5px dashed rgba(59,130,246,0.35)' }}
+                >
+                  <span className="text-4xl text-blue-400/60">+</span>
+                  <span className="text-xs text-gray-500 font-semibold">ADD LOGO / SCREENSHOT</span>
+                </div>
+
+                <h2 className="text-2xl font-extrabold text-white mb-1">{selectedHubItem.name}</h2>
+                <p className="text-yellow-400 font-semibold mb-5">★ {selectedHubItem.rating} rating</p>
+
+                <div
+                  className="rounded-2xl p-5 mb-6"
+                  style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.18)' }}
+                >
+                  <p className="text-gray-400 leading-relaxed">
+                    Full details for <strong className="text-gray-200">{selectedHubItem.name}</strong> will
+                    appear here — description, compatible devices, file size, and setup steps. This is a
+                    placeholder detail page; real content will be added soon.
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => setToast('Download will be available once this item is fully added.')}
+                  className="w-full py-4 rounded-2xl font-extrabold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
+                >
+                  Download
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {toast && (
         <div className="velo-toast" role="status" aria-live="polite">
           <span aria-hidden="true">✦</span>
@@ -647,7 +813,7 @@ export default function App() {
               title="Gaming APKs & Mods"
               description="GFX tools, FPS configs, gaming setups and performance boosters."
               buttonLabel="Open Gaming Hub"
-              onClick={() => handleCardClick('🎮 Gaming APKs & Mods')}
+              onClick={() => openCategoryHub('gaming')}
             />
             <CategoryCard
               emoji="🛠️"
