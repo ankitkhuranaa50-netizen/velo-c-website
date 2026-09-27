@@ -28,7 +28,7 @@ export default function App() {
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
 
-
+  const handleContactSubmit = () => {
     if (!contactMessage.trim()) {
       setToast('Please write your problem or feedback before sending.');
       return;
