@@ -1,4 +1,10 @@
 const FILES = {
+  "flip-master": {
+    file_id: "BQACAgUAAxkBAAMWasEXSBzcRNITFmu-I6OAbuv1VSEAAj4ZAAJOOQFVyamw8zdTKRQ9BA",
+    name: "Flip Master",
+    version: "3.4.00.apk",
+    size: "143.1 MB",
+  },
   game1: {
     file_id: "BQACAgUAAxkBAAMFasDGjvGAj-E-vJxkVyeRfFKcSz8AAuIXAAJOOQFVj6qA_y-Gawo9BA",
     name: "Car Simulator 2 (MOD)",
