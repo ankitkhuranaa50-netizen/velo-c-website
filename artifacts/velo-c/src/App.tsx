@@ -126,16 +126,28 @@ export default function App() {
   };
 
   // Category Hub — the per-category page (Gaming APKs & Mods first, others follow later)
+  type HubItem = {
+    name: string;
+    rating: string;
+    downloadUrl?: string;
+    description?: string;
+    logo?: string;
+  };
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [categorySearch, setCategorySearch] = useState('');
-  const [selectedHubItem, setSelectedHubItem] = useState<{ name: string; rating: string } | null>(null);
+  const [selectedHubItem, setSelectedHubItem] = useState<HubItem | null>(null);
 
-  const categoryData: Record<string, { title: string; items: { name: string; rating: string }[] }> = {
+  const categoryData: Record<string, { title: string; items: HubItem[] }> = {
     gaming: {
       title: '🎮 Gaming APKs & Mods',
       items: [
         // ▼▼▼ BLANK PLACEHOLDER SLOTS — replace name/rating with real content anytime ▼▼▼
-        { name: 'Add Game Name', rating: '—' },
+        {
+          name: 'Car Simulator 2 (MOD)',
+          rating: '4.5',
+          downloadUrl: 'https://t.me/VeloCFilesBot?start=game1',
+          description: 'Car Simulator 2 MOD APK, Unlimited Money. Version 1.57.1, size 756 MB. Download dabayein, Telegram bot file seedha bhej dega.',
+        },
         { name: 'Add Game Name', rating: '—' },
         { name: 'Add Game Name', rating: '—' },
         { name: 'Add Game Name', rating: '—' },
@@ -652,14 +664,16 @@ export default function App() {
                   style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.18)' }}
                 >
                   <p className="text-gray-400 leading-relaxed">
-                    Full details for <strong className="text-gray-200">{selectedHubItem.name}</strong> will
-                    appear here — description, compatible devices, file size, and setup steps. This is a
-                    placeholder detail page; real content will be added soon.
+                    {selectedHubItem.description ?? 'Details coming soon.'}
                   </p>
                 </div>
 
                 <button
-                  onClick={() => setToast('Download will be available once this item is fully added.')}
+                  onClick={() =>
+                    selectedHubItem.downloadUrl
+                      ? (window.location.href = selectedHubItem.downloadUrl)
+                      : setToast('Download will be available once this item is fully added.')
+                  }
                   className="w-full py-4 rounded-2xl font-extrabold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
                   style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
                 >
