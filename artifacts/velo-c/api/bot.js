@@ -1,6 +1,10 @@
 const FILES = {
-  // key: { file_id, caption }
-  game1: { file_id: "BQACAgUAAxkBAAMFasDGjvGAj-E-vJxkVyeRfFKcSz8AAuIXAAJOOQFVj6qA_y-Gawo9BA", caption: "Game 1" },
+  game1: {
+    file_id: "BQACAgUAAxkBAAMFasDGjvGAj-E-vJxkVyeRfFKcSz8AAuIXAAJOOQFVj6qA_y-Gawo9BA",
+    name: "Car Simulator 2 (MOD)",
+    version: "1.57.1",
+    size: "756 MB",
+  },
 };
 
 const API = `https://api.telegram.org/bot${process.env.BOT_TOKEN}`;
@@ -20,7 +24,6 @@ export default async function handler(req, res) {
   const text = msg.text || "";
   const isOwner = String(msg.from.id) === String(process.env.OWNER_ID || "");
 
-  // Owner file bheje to uska file_id wapas mil jaata hai
   const f = msg.document || msg.video;
   if (f) {
     if (isOwner) await tg("sendMessage", { chat_id: chat, text: "file_id:\n" + f.file_id });
@@ -32,10 +35,32 @@ export default async function handler(req, res) {
   } else if (text.startsWith("/start")) {
     const item = FILES[text.split(" ")[1]];
     if (item) {
-      await tg("sendMessage", { chat_id: chat, text: "Aapki file aa rahi hai, thoda wait karein..." });
-      await tg("sendDocument", { chat_id: chat, document: item.file_id, caption: item.caption });
+      await tg("sendChatAction", { chat_id: chat, action: "upload_document" });
+      await tg("sendMessage", {
+        chat_id: chat,
+        parse_mode: "HTML",
+        text: `⏳ <b>${item.name}</b> bheji ja rahi hai.\nBadi file hai to thoda wait karein.`,
+      });
+      await tg("sendDocument", {
+        chat_id: chat,
+        document: item.file_id,
+        parse_mode: "HTML",
+        caption:
+          `🎮 <b>${item.name}</b>\n` +
+          `📦 Version: ${item.version}\n` +
+          `💾 Size: ${item.size}\n\n` +
+          `✅ <b>Install kaise karein:</b>\n` +
+          `1. File download hone ke baad open karein\n` +
+          `2. "Install unknown apps" allow karein\n` +
+          `3. Install karke khelein\n\n` +
+          `🌐 Velo C Downloads`,
+      });
     } else {
-      await tg("sendMessage", { chat_id: chat, text: "Velo C pe wapas jaakar download button dabayein." });
+      await tg("sendMessage", {
+        chat_id: chat,
+        parse_mode: "HTML",
+        text: "👋 <b>Velo C Downloads mein swagat hai!</b>\n\nKoi bhi file paane ke liye Velo C website pe jaakar <b>Download</b> button dabayein, file yahin aa jayegi.",
+      });
     }
   }
   res.status(200).send("ok");
