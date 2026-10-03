@@ -146,6 +146,7 @@ export default function App() {
           name: 'Car Simulator 2 (MOD)',
           rating: '4.5',
           downloadUrl: 'https://t.me/VeloCFilesBot?start=game1',
+          logo: '/car-simulator-2.png',
           description: 'Car Simulator 2 MOD APK, Unlimited Money. Version 1.57.1, size 756 MB. Download dabayein, Telegram bot file seedha bhej dega.',
         },
         { name: 'Add Game Name', rating: '—' },
@@ -156,6 +157,17 @@ export default function App() {
         // ▲▲▲ Add more { name: '...', rating: '...' } lines here for more slots ▲▲▲
       ],
     },
+  };
+
+  const openDownload = (url: string) => {
+    const m = url.match(/^https:\/\/t\.me\/([A-Za-z0-9_]+)\?start=([A-Za-z0-9_-]+)$/);
+    if (m && /android/i.test(navigator.userAgent)) {
+      const fallback = encodeURIComponent(url);
+      window.location.href =
+        `intent://resolve?domain=${m[1]}&start=${m[2]}#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${fallback};end`;
+      return;
+    }
+    window.location.href = url;
   };
 
   const openCategoryHub = (key: string) => {
@@ -612,6 +624,9 @@ export default function App() {
                     className="flex flex-col items-start gap-2 rounded-2xl p-4 text-left transition-all hover:scale-[1.03]"
                     style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.18)' }}
                   >
+                    {item.logo ? (
+                      <img src={item.logo} alt={item.name} className="w-full aspect-square rounded-xl object-cover" />
+                    ) : (
                     <div
                       className="w-full aspect-square rounded-xl flex flex-col items-center justify-center gap-1"
                       style={{ background: 'rgba(59,130,246,0.06)', border: '1.5px dashed rgba(59,130,246,0.35)' }}
@@ -619,6 +634,7 @@ export default function App() {
                       <span className="text-2xl text-blue-400/60">+</span>
                       <span className="text-[9px] text-gray-500 font-semibold">LOGO</span>
                     </div>
+                    )}
                     <span className="font-bold text-gray-200 text-sm leading-tight">{item.name}</span>
                     <span className="text-xs text-yellow-400 font-semibold">★ {item.rating}</span>
                   </button>
@@ -648,6 +664,9 @@ export default function App() {
                   <span className="text-xl">←</span> Back
                 </button>
 
+                {selectedHubItem.logo ? (
+                  <img src={selectedHubItem.logo} alt={selectedHubItem.name} className="w-40 h-40 mx-auto rounded-3xl object-cover mb-6" />
+                ) : (
                 <div
                   className="w-full aspect-video rounded-3xl flex flex-col items-center justify-center gap-2 mb-6"
                   style={{ background: 'rgba(59,130,246,0.06)', border: '1.5px dashed rgba(59,130,246,0.35)' }}
@@ -655,6 +674,7 @@ export default function App() {
                   <span className="text-4xl text-blue-400/60">+</span>
                   <span className="text-xs text-gray-500 font-semibold">ADD LOGO / SCREENSHOT</span>
                 </div>
+                )}
 
                 <h2 className="text-2xl font-extrabold text-white mb-1">{selectedHubItem.name}</h2>
                 <p className="text-yellow-400 font-semibold mb-5">★ {selectedHubItem.rating} rating</p>
@@ -671,7 +691,7 @@ export default function App() {
                 <button
                   onClick={() =>
                     selectedHubItem.downloadUrl
-                      ? (window.location.href = selectedHubItem.downloadUrl)
+                      ? openDownload(selectedHubItem.downloadUrl)
                       : setToast('Download will be available once this item is fully added.')
                   }
                   className="w-full py-4 rounded-2xl font-extrabold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
