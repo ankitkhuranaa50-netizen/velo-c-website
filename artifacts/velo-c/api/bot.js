@@ -1,6 +1,6 @@
 const FILES = {
   // key: { file_id, caption }
-  game1: { file_id: "PASTE_FILE_ID_HERE", caption: "Game 1" },
+  game1: { file_id: "BQACAgUAAxkBAAMFasDGjvGAj-E-vJxkVyeRfFKcSz8AAuIXAAJOOQFVj6qA_y-Gawo9BA", caption: "Game 1" },
 };
 
 const API = `https://api.telegram.org/bot${process.env.BOT_TOKEN}`;
