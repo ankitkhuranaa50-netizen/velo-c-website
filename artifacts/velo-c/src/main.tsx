@@ -4,6 +4,7 @@ import React from 'react';
 import App from './App';
 
 import './index.css';
+import "./premium.css";
 
 class AppErrorBoundary extends React.Component<
   { children: React.ReactNode },
