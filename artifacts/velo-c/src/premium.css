@@ -157,3 +157,104 @@ div.group.rounded-3xl > div.w-12.h-12 { box-shadow: 0 0 26px rgba(255, 255, 255,
 @media (prefers-reduced-motion: reduce) {
   h1.hero-fade-2 { animation: none !important; filter: none !important; transform: none !important; opacity: 1 !important; }
 }
+
+/* ==========================================================================
+   VELO C CONTACT
+   Neeche ke Advertisement box ki jagah Contact section + animations.
+   Hatana ho to is block ko hata do (ya git revert).
+   ========================================================================== */
+
+main > section { display: flow-root; }
+
+#contact-section { position: relative; }
+
+#contact-section .vc-contact-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+#contact-section .vc-blob-a { width: 240px; height: 240px; top: 6%; left: -30px; background: #c7d2fe; animation: vcDrift 14s ease-in-out infinite; }
+#contact-section .vc-blob-b { width: 280px; height: 280px; bottom: 4%; right: -50px; background: #fbcfe8; animation: vcDrift 18s ease-in-out infinite reverse; }
+@keyframes vcDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(28px, -22px) scale(1.12); }
+}
+
+#contact-section .vc-c-chip {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(139, 92, 246, 0.14));
+  color: #6366f1;
+}
+
+#contact-section .vc-contact-card {
+  background: linear-gradient(145deg, #ffffff, #f6f4ff) !important;
+  box-shadow: 0 40px 80px -40px rgba(99, 102, 241, 0.5), 0 12px 34px -18px rgba(15, 23, 42, 0.2) !important;
+  backdrop-filter: none !important;
+}
+
+#contact-section .vc-field {
+  background: #f1f5f9;
+  color: #0f172a;
+  border: none !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+#contact-section .vc-field::placeholder { color: #94a3b8; }
+#contact-section .vc-field:focus {
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35), 0 14px 32px -14px rgba(99, 102, 241, 0.55);
+}
+
+#contact-section .vc-send {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff !important;
+  background: linear-gradient(120deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+  background-size: 300% 100%;
+  box-shadow: 0 18px 36px -16px rgba(99, 102, 241, 0.8);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.7s ease;
+}
+#contact-section .vc-send::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+#contact-section .vc-send:hover {
+  transform: translateY(-2px);
+  background-position: 100% 0;
+  box-shadow: 0 24px 44px -16px rgba(139, 92, 246, 0.85);
+}
+#contact-section .vc-send:hover::after { left: 140%; transition: left 0.8s ease; }
+#contact-section .vc-send:active { transform: translateY(0) scale(0.99); }
+
+#contact-section .vc-tg-link { color: #229ed9; }
+
+@supports (animation-timeline: view()) {
+  @keyframes vcRise {
+    from { opacity: 0; transform: translateY(42px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes vcFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  #contact-section .vc-c-head,
+  #contact-section .vc-contact-card {
+    animation: vcRise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+  #contact-section .vc-fields > :nth-child(1) { animation: vcFadeIn linear both; animation-timeline: view(); animation-range: entry 15% entry 60%; }
+  #contact-section .vc-fields > :nth-child(2) { animation: vcFadeIn linear both; animation-timeline: view(); animation-range: entry 22% entry 68%; }
+  #contact-section .vc-fields > :nth-child(3) { animation: vcFadeIn linear both; animation-timeline: view(); animation-range: entry 30% entry 76%; }
+  #contact-section .vc-fields > :nth-child(4) { animation: vcFadeIn linear both; animation-timeline: view(); animation-range: entry 38% entry 84%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #contact-section .vc-contact-blob,
+  #contact-section .vc-c-head,
+  #contact-section .vc-contact-card,
+  #contact-section .vc-fields > * { animation: none !important; opacity: 1 !important; transform: none !important; }
+}

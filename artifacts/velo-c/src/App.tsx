@@ -1099,56 +1099,77 @@ export default function App() {
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }} className="mt-16" />
         </section>
 
-        {/* SECTION 5.7 — ADVERTISEMENT BOX */}
-        <section className="px-6 pb-0 max-w-5xl mx-auto" style={{ background: '#0a0a0d' }}>
-          <div className="mt-0 mb-16">
-            {/* 16:9 aspect-ratio wrapper */}
-            <div className="relative w-full" style={{ paddingBottom: 'calc(9/16 * 100%)' }}>
-              <div
-                className="absolute inset-0 rounded-3xl overflow-hidden flex flex-col items-center justify-center gap-3"
+        {/* SECTION 5.7 - CONTACT (replaced the advertisement box) */}
+        <section id="contact-section" className="px-6 pb-20 max-w-5xl mx-auto">
+          <div className="relative pt-4">
+            <span className="vc-contact-blob vc-blob-a" aria-hidden="true" />
+            <span className="vc-contact-blob vc-blob-b" aria-hidden="true" />
+
+            <div className="vc-c-head relative text-center mb-10">
+              <span className="vc-c-chip inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+                Contact
+              </span>
+              <h2
+                className="text-3xl md:text-4xl font-extrabold"
                 style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  backdropFilter: 'blur(18px)',
-                  border: '1.5px dashed rgba(59,130,246,0.4)',
-                  boxShadow: '0 0 32px rgba(59,130,246,0.08), 0 4px 30px rgba(0,0,0,0.2)',
+                  background: 'linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
                 }}
               >
-                {/* gradient overlay */}
-                <div
-                  className="absolute inset-0 rounded-3xl pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(59,130,246,0.06) 100%)',
-                  }}
+                Contact Us
+              </h2>
+              <p className="mt-3 text-gray-500 max-w-md mx-auto leading-relaxed">
+                Found a broken link? Have a suggestion? Write it below, it goes straight to us.
+              </p>
+            </div>
+
+            <div className="vc-contact-card relative max-w-2xl mx-auto rounded-3xl p-6 md:p-10">
+              <div className="vc-fields flex flex-col gap-4">
+                <input
+                  type="text"
+                  placeholder="Your name (optional)"
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  className="vc-field w-full rounded-2xl px-4 py-3.5 outline-none"
                 />
-                {/* content */}
-                <span className="relative text-3xl md:text-5xl select-none">📢</span>
-                <p
-                  className="relative font-extrabold text-xl md:text-3xl tracking-tight text-gray-200 text-center px-4"
+                <input
+                  type="email"
+                  placeholder="Your email (so we can reply)"
+                  value={contactEmail}
+                  onChange={(e) => setContactEmail(e.target.value)}
+                  className="vc-field w-full rounded-2xl px-4 py-3.5 outline-none"
+                />
+                <textarea
+                  placeholder="Describe your problem or feedback..."
+                  value={contactMessage}
+                  onChange={(e) => setContactMessage(e.target.value)}
+                  rows={5}
+                  className="vc-field w-full rounded-2xl px-4 py-3.5 outline-none resize-none"
+                />
+                <button
+                  onClick={handleContactSubmit}
+                  className="vc-send w-full py-4 rounded-2xl font-extrabold"
                 >
-                  Advertisement Space
-                </p>
-                <p
-                  className="relative text-sm md:text-base font-medium text-center px-6 max-w-md"
-                  style={{ color: '#6b7280' }}
-                >
-                  Your brand could be here.{' '}
-                  <span
-                    className="font-semibold"
-                    style={{ color: '#00c8d4' }}
-                  >
-                    Contact us for partnerships.
-                  </span>
-                </p>
-                {/* corner accent dots */}
-                <span className="absolute top-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(0,240,255,0.4)' }} />
-                <span className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(139,92,246,0.4)' }} />
-                <span className="absolute bottom-4 left-4 w-2 h-2 rounded-full" style={{ background: 'rgba(139,92,246,0.4)' }} />
-                <span className="absolute bottom-4 right-4 w-2 h-2 rounded-full" style={{ background: 'rgba(59,130,246,0.4)' }} />
+                  Send Message
+                </button>
               </div>
+
+              <p className="text-sm text-gray-500 text-center mt-6">
+                You can also message us directly on{' '}
+                <a
+                  href="https://t.me/Thecrackedx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="vc-tg-link font-semibold"
+                >
+                  Telegram
+                </a>
+                .
+              </p>
             </div>
           </div>
         </section>
-
         {/* SECTION 6 — TRUSTED COMPANIES MARQUEE */}
         <section className="w-full overflow-hidden py-16 border-y" style={{ background: '#0a0a0d', borderColor: 'rgba(255,255,255,0.08)' }}>
           <h3 className="text-2xl font-bold text-center text-white mb-12">
