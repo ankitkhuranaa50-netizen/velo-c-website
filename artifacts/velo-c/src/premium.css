@@ -89,3 +89,71 @@ button.flex-col.rounded-2xl.text-left:hover {
   }
   div.group.rounded-3xl:hover::after { transition: none; }
 }
+
+/* ==========================================================================
+   VELO C BLACK AND WHITE
+   Poori site black and white. Explore More page isko skip karta hai.
+   Hatana ho to is poore block ko hata do (ya git revert).
+   ========================================================================== */
+
+/* Full-screen grayscale layer (clicks isse hokar guzar jaate hain) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  -webkit-backdrop-filter: grayscale(1) contrast(1.1);
+  backdrop-filter: grayscale(1) contrast(1.1);
+}
+body:has(.explore-shell)::after { display: none; }
+
+/* Hero label hidden, VELO C bigger and smoother */
+.hero-fade-1 { display: none !important; }
+h1.hero-fade-2 {
+  font-size: clamp(4.25rem, 21vw, 10rem) !important;
+  letter-spacing: -0.035em !important;
+  line-height: 0.95 !important;
+  text-shadow: 0 0 70px rgba(255, 255, 255, 0.18) !important;
+  animation: vcTitleIn 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both !important;
+}
+h1.hero-fade-2 .text-glow {
+  background: linear-gradient(180deg, #ffffff 10%, #8a8a8a 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+@keyframes vcTitleIn {
+  from { opacity: 0; filter: blur(14px); transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; filter: blur(0);    transform: translateY(0) scale(1); }
+}
+
+/* White buttons, black text */
+div.group.rounded-3xl > div.w-full.mt-2 > button,
+button.w-full.py-4.rounded-2xl.font-extrabold {
+  background: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 8px 28px -10px rgba(255, 255, 255, 0.35);
+}
+div.group.rounded-3xl > div.w-full.mt-2 > button:hover,
+button.w-full.py-4.rounded-2xl.font-extrabold:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.45);
+  filter: none;
+}
+
+/* White edges instead of cyan/purple */
+div.group.rounded-3xl:hover {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 22px 60px -14px rgba(255, 255, 255, 0.2);
+}
+button.flex-col.rounded-2xl.text-left:hover {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 14px 34px -12px rgba(255, 255, 255, 0.25);
+}
+div.group.rounded-3xl > div.w-12.h-12 { box-shadow: 0 0 26px rgba(255, 255, 255, 0.25); }
+.hero-fade-4 .text-2xl.font-extrabold { text-shadow: 0 0 18px rgba(255, 255, 255, 0.35); }
+:root { --vc-cyan: #ffffff; --vc-blue: #d4d4d4; --vc-purple: #8a8a8a; }
+
+@media (prefers-reduced-motion: reduce) {
+  h1.hero-fade-2 { animation: none !important; filter: none !important; transform: none !important; opacity: 1 !important; }
+}

@@ -1,18 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { SHAPES, SHAPE_KEYS, SHAPE_LABELS, COUNT, type ShapeKey } from './particleShapes';
+import { SHAPES, SHAPE_KEYS, COUNT, type ShapeKey } from './particleShapes';
 
 export default function ParticleShowcase() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const shapeRef = useRef<ShapeKey>('sphere');
   const manualRef = useRef(false);
-  const [shape, setShape] = useState<ShapeKey>('sphere');
-
-  const choose = (k: ShapeKey, manual = true) => {
-    shapeRef.current = k;
-    if (manual) manualRef.current = true;
-    setShape(k);
-  };
+  const [, setShape] = useState<ShapeKey>('sphere');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -26,11 +20,8 @@ export default function ParticleShowcase() {
     const colors: [number, number, number][] = [];
     for (let i = 0; i < COUNT; i++) {
       const m = i / COUNT;
-      colors.push([
-        Math.round(34 + (139 - 34) * m),
-        Math.round(211 + (92 - 211) * m),
-        Math.round(238 + (246 - 238) * m),
-      ]);
+      const g = Math.round(255 - 90 * m);
+      colors.push([g, g, g]);
     }
 
     let size = 0, dpr = 1, raf = 0, visible = true;
@@ -129,41 +120,15 @@ export default function ParticleShowcase() {
 
   return (
     <section className="px-6 pb-24 max-w-4xl mx-auto">
-      <span className="block text-center uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-blue-400 mb-3">
-        Interactive 3D
-      </span>
-      <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+      <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
         Explore the Velo C Universe
       </h2>
-      <p className="text-center text-gray-400 mb-8">Drag to rotate. Tap a shape to morph it.</p>
-
-      <div
-        className="rounded-3xl p-4 md:p-6"
-        style={{
-          background: 'radial-gradient(circle at 50% 40%, rgba(139,92,246,0.18), rgba(10,10,13,0.9) 70%)',
-          border: '1px solid rgba(139,92,246,0.3)',
-          boxShadow: '0 0 60px -20px rgba(34,211,238,0.35)',
-        }}
-      >
-        <div ref={wrapRef} className="w-full max-w-md mx-auto">
-          <canvas ref={canvasRef} style={{ width: '100%', display: 'block', touchAction: 'pan-y' }} aria-label="Interactive 3D particle shape" />
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
-          {SHAPE_KEYS.map((k) => (
-            <button
-              key={k}
-              onClick={() => choose(k)}
-              className="px-4 py-2 rounded-full text-sm font-bold transition-all active:scale-95"
-              style={{
-                background: shape === k ? 'linear-gradient(135deg, #22d3ee, #8b5cf6)' : 'rgba(255,255,255,0.06)',
-                color: '#fff',
-                border: '1px solid rgba(139,92,246,0.35)',
-              }}
-            >
-              {SHAPE_LABELS[k]}
-            </button>
-          ))}
-        </div>
+      <div ref={wrapRef} className="w-full max-w-md mx-auto">
+        <canvas
+          ref={canvasRef}
+          style={{ width: '100%', display: 'block', touchAction: 'pan-y' }}
+          aria-label="Interactive 3D particle shape"
+        />
       </div>
     </section>
   );
