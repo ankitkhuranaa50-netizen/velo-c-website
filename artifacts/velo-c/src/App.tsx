@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ParticleShowcase from './ParticleShowcase';
 import { FaTelegram, FaYoutube, FaGithub, FaTimes, FaPaperPlane, FaRobot, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { useAuth } from './hooks/useAuth';
 
@@ -817,6 +818,8 @@ export default function App() {
 
           </div>
         </section>
+
+        <ParticleShowcase />
 
         {/* SECTION 4 — SOCIAL ICONS */}
         <section className="flex justify-center items-center gap-10 pb-20">
