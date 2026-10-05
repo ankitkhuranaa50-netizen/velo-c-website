@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       await tg("sendMessage", {
         chat_id: chat,
         parse_mode: "HTML",
-        text: `⏳ <b>${item.name}</b> bheji ja rahi hai.\nBadi file hai to thoda wait karein.`,
+        text: `⏳ <b>${item.name}</b> is being sent.\nLarge files may take a moment, please wait.`,
       });
       await tg("sendDocument", {
         chat_id: chat,
@@ -55,17 +55,17 @@ export default async function handler(req, res) {
           `🎮 <b>${item.name}</b>\n` +
           `📦 Version: ${item.version}\n` +
           `💾 Size: ${item.size}\n\n` +
-          `✅ <b>Install kaise karein:</b>\n` +
-          `1. File download hone ke baad open karein\n` +
-          `2. "Install unknown apps" allow karein\n` +
-          `3. Install karke khelein\n\n` +
+          `✅ <b>How to install:</b>\n` +
+          `1. Open the downloaded file.\n` +
+          `2. Allow "Install unknown apps" when prompted.\n` +
+          `3. Tap Install and enjoy.\n\n` +
           `🌐 Velo C Downloads`,
       });
     } else {
       await tg("sendMessage", {
         chat_id: chat,
         parse_mode: "HTML",
-        text: "👋 <b>Velo C Downloads mein swagat hai!</b>\n\nKoi bhi file paane ke liye Velo C website pe jaakar <b>Download</b> button dabayein, file yahin aa jayegi.",
+        text: "👋 <b>Welcome to Velo C Downloads!</b>\n\nTo get a file, open the Velo C website and tap the <b>Download</b> button. Your file will be delivered right here.",
       });
     }
   }

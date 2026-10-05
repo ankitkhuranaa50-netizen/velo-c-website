@@ -148,7 +148,7 @@ export default function App() {
           rating: '4.5',
           downloadUrl: 'https://t.me/VeloCFilesBot?start=game1',
           logo: '/car-simulator-2.png',
-          description: 'Car Simulator 2 MOD APK, Unlimited Money. Version 1.57.1, size 756 MB. Download dabayein, Telegram bot file seedha bhej dega.',
+          description: 'Car Simulator 2 MOD APK with Unlimited Money. Version 1.57.1, size 756 MB. Tap Download and the file will be sent to you through our Telegram bot.',
         },
         {
           name: "Flip Master",
@@ -695,6 +695,14 @@ export default function App() {
                   </p>
                 </div>
 
+                <div
+                  className="rounded-2xl p-5 mb-5 text-center"
+                  style={{ background: 'rgba(245,158,11,0.12)', border: '2px solid rgba(245,158,11,0.75)' }}
+                >
+                  <p className="text-lg font-extrabold leading-snug" style={{ color: '#fcd34d' }}>
+                    ⚠️ IMPORTANT: Install the Telegram app and turn on a VPN before you download. Both are compulsory.
+                  </p>
+                </div>
                 <button
                   onClick={() =>
                     selectedHubItem.downloadUrl
