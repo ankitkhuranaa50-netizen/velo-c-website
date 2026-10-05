@@ -258,3 +258,10 @@ main > section { display: flow-root; }
   #contact-section .vc-contact-card,
   #contact-section .vc-fields > * { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
+
+/* VELO C NOTICE - Telegram/VPN notice game detail page par amber highlight */
+div.z-\[80\] div.rounded-2xl.p-5 {
+  background: rgba(245, 158, 11, 0.16) !important;
+  box-shadow: none !important;
+}
+div.z-\[80\] div.rounded-2xl.p-5 p { color: #92400e !important; }
