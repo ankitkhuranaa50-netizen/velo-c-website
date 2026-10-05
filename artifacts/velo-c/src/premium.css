@@ -265,3 +265,133 @@ div.z-\[80\] div.rounded-2xl.p-5 {
   box-shadow: none !important;
 }
 div.z-\[80\] div.rounded-2xl.p-5 p { color: #92400e !important; }
+
+/* ==========================================================================
+   VELO C LIGHT
+   Upar ka dark hissa black and white, "Mind Behind" se neeche white +
+   colourful, hub page white premium, About mein reading animation.
+   Hatana ho to is poore block ko hata do (ya git revert).
+   ========================================================================== */
+
+body::after { display: none !important; }
+main > div:first-of-type,
+header.fixed.top-0,
+div.fixed.bottom-6.right-6.z-40,
+div[role="dialog"].fixed.inset-0.z-\[60\]:not(:has(.explore-content)) {
+  filter: grayscale(1) contrast(1.1);
+}
+
+main > section {
+  background: #ffffff !important;
+  box-shadow: 0 0 0 100vmax #ffffff;
+  clip-path: inset(0 -100vmax);
+}
+main > section * { border-color: transparent !important; }
+main > section .text-white { color: #0f172a !important; }
+main > section .text-gray-200,
+main > section .text-gray-300 { color: #1e293b !important; }
+main > section .text-gray-400 { color: #475569 !important; }
+main > section .text-gray-500 { color: #64748b !important; }
+main > section .vc-emoji { filter: none; }
+
+main > section:nth-of-type(1) > div.rounded-3xl {
+  background: linear-gradient(145deg, #f8f9ff, #f3f0ff) !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 30px 70px -30px rgba(99, 102, 241, 0.45), 0 10px 30px -15px rgba(15, 23, 42, 0.15) !important;
+}
+main > section:nth-of-type(1) div.rounded-2xl {
+  background: #ffffff !important;
+  box-shadow: 0 10px 26px -14px rgba(99, 102, 241, 0.5) !important;
+}
+main > section:nth-of-type(1) div.rounded-2xl .text-lg.font-extrabold {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+}
+main > section:nth-of-type(2) div.rounded-3xl {
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff) !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+main > section:nth-of-type(3) .animate-marquee > span { color: #334155; }
+
+footer.w-full.px-6.py-10 {
+  background: #f8fafc !important;
+  border-color: transparent !important;
+  backdrop-filter: none !important;
+}
+footer.w-full.px-6.py-10 .footer-link { color: #475569; }
+footer.w-full.px-6.py-10 .footer-social-icon,
+footer.w-full.px-6.py-10 .footer-social-icon svg { color: #6366f1 !important; }
+footer.w-full.px-6.py-10 a[aria-label="YouTube"],
+footer.w-full.px-6.py-10 a[aria-label="YouTube"] svg { color: #ff0033 !important; }
+footer.w-full.px-6.py-10 a[aria-label="Telegram"],
+footer.w-full.px-6.py-10 a[aria-label="Telegram"] svg { color: #229ed9 !important; }
+footer.w-full.px-6.py-10 a[aria-label="GitHub"],
+footer.w-full.px-6.py-10 a[aria-label="GitHub"] svg { color: #111827 !important; }
+
+div[role="dialog"].fixed.inset-0.z-\[70\] {
+  background: linear-gradient(180deg, #f8f8fc, #eceef6) !important;
+}
+div.z-\[70\] button.font-bold.text-gray-300 { color: #334155 !important; }
+div.z-\[70\] span.rounded-full {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 24px -12px rgba(15, 23, 42, 0.6);
+}
+div.z-\[70\] input {
+  background: #ffffff !important;
+  border: none !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 28px -16px rgba(15, 23, 42, 0.35);
+}
+div.z-\[70\] input::placeholder { color: #94a3b8 !important; }
+div.z-\[70\] .text-gray-500 { color: #64748b !important; }
+div.z-\[70\] .vc-emoji { filter: none; }
+button.flex-col.rounded-2xl.text-left {
+  background: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 14px 32px -18px rgba(15, 23, 42, 0.4) !important;
+}
+button.flex-col.rounded-2xl.text-left:hover {
+  box-shadow: 0 22px 46px -18px rgba(15, 23, 42, 0.5) !important;
+}
+button.flex-col.rounded-2xl.text-left > span { color: #000000 !important; }
+button.flex-col.rounded-2xl.text-left > div {
+  background: #ececec !important;
+  border: none !important;
+}
+button.flex-col.rounded-2xl.text-left > div span { color: #8a8a8a !important; }
+
+div[role="dialog"].fixed.inset-0.z-\[80\] {
+  background: linear-gradient(180deg, #f8f8fc, #eceef6) !important;
+}
+div.z-\[80\] :where(h1, h2, h3, p, span, strong) { color: #0f172a !important; }
+div.z-\[80\] button:not(.w-full) { color: #0f172a !important; }
+div.z-\[80\] div[style*="dashed"] { border: none !important; background: #e9e9ee !important; }
+div.z-\[80\] div.rounded-2xl.p-5 { background: #ffffff !important; border: none !important; box-shadow: 0 14px 32px -18px rgba(15, 23, 42, 0.35); }
+div.z-\[80\] button.w-full.py-4.rounded-2xl.font-extrabold,
+div.z-\[80\] button.w-full.py-4.rounded-2xl.font-extrabold * {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+div.z-\[80\] .vc-emoji { filter: none; }
+
+@supports (animation-timeline: view()) {
+  @keyframes vcRead {
+    from { opacity: 0.16; transform: translateY(14px); }
+    to   { opacity: 1;    transform: translateY(0); }
+  }
+  #about-section h3,
+  #about-section p {
+    animation: vcRead linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 32%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #about-section h3,
+  #about-section p { animation: none !important; opacity: 1 !important; transform: none !important; }
+}

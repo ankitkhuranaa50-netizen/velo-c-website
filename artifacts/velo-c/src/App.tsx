@@ -161,6 +161,12 @@ export default function App() {
         { name: 'Add Game Name', rating: '—' },
         { name: 'Add Game Name', rating: '—' },
         { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
+        { name: 'Add Game Name', rating: '—' },
         // ▲▲▲ Add more { name: '...', rating: '...' } lines here for more slots ▲▲▲
       ],
     },
@@ -590,21 +596,6 @@ export default function App() {
               >
                 {categoryData[activeCategory].title}
               </span>
-            </div>
-
-            {/* Advertisement box (same style as home page) */}
-            <div className="relative w-full mb-8" style={{ paddingBottom: 'calc(9/16 * 100%)' }}>
-              <div
-                className="absolute inset-0 rounded-3xl overflow-hidden flex flex-col items-center justify-center gap-2"
-                style={{
-                  background: 'rgba(59,130,246,0.04)',
-                  border: '1.5px dashed rgba(59,130,246,0.35)',
-                }}
-              >
-                <span className="text-3xl">📢</span>
-                <p className="font-extrabold text-lg text-gray-300">Advertisement Space</p>
-                <p className="text-xs text-gray-500">Your brand could be here.</p>
-              </div>
             </div>
 
             {/* Search bar — filters items within this category */}
