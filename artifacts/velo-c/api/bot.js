@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "burger-simulator": {
+    file_id: "BQACAgUAAxkBAAMpasfqdfOMxCIXVHtCq6yl_aeYfeMAArcgAAICVdBWi7qR45mip6Q9BA",
+    name: "BURGER SIMULATOR Apk",
+    version: "22.0.0.",
+    size: "170MB",
+  },
   "flip-master": {
     file_id: "BQACAgUAAxkBAAMWasEXSBzcRNITFmu-I6OAbuv1VSEAAj4ZAAJOOQFVyamw8zdTKRQ9BA",
     name: "Flip Master",
