@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "frffrrag-pro-shooting": {
+    file_id: "BQACAgUAAxkBAAMrason0tEVqzirx_8AAesP59jm5_hiAAL3JgACRfVRV_ZRDbAEA19xPQQ",
+    name: "FRAG PRO SHOOTING (unlimited money)",
+    version: "5.3.0",
+    size: "217MB",
+  },
   "burger-simulator": {
     file_id: "BQACAgUAAxkBAAMpasfqdfOMxCIXVHtCq6yl_aeYfeMAArcgAAICVdBWi7qR45mip6Q9BA",
     name: "BURGER SIMULATOR Apk",
