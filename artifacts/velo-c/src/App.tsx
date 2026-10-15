@@ -1574,6 +1574,13 @@ export default function App() {
     editing: {
       title: '🛠️ AI Editing Tools',
       items: [
+        {
+          name: "CAPCUT ULTRA Pro",
+          rating: "3.9",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=capcut",
+          description: "CapCut Pro is the premium subscription of CapCut, offering advanced video editing tools, AI features, cloud storage, and professional-grade effects for creators.",
+          logo: "/capcut.jpg",
+        },
         // ▲▲▲ Add more { name: '...', rating: '...' } lines here for more slots ▲▲▲
       ],
     },

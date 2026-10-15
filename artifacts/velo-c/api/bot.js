@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "capcut": {
+    file_id: "BQACAgUAAxkBAAMwatBw0XwBTEC_1EPbuNtvPXu2PS4AAjolAAKZTWBWoAcyRirY-CA9BA",
+    name: "CAPCUT ULTRA Pro",
+    version: "V28.2.0",
+    size: "247.8MB",
+  },
   "frffrrag-pro-shooting": {
     file_id: "BQACAgUAAxkBAAMrason0tEVqzirx_8AAesP59jm5_hiAAL3JgACRfVRV_ZRDbAEA19xPQQ",
     name: "FRAG PRO SHOOTING (unlimited money)",
