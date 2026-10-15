@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "inshot": {
+    file_id: "BQACAgUAAxkBAAMyatCXeCGpOYa_JnzEvupMkTCdOPUAAtokAAKgeAhW26XSV6W-rws9BA",
+    name: "INSHOT PREMIUM",
+    version: "v2.241.1553",
+    size: "89.1MB",
+  },
   "capcut": {
     file_id: "BQACAgUAAxkBAAMwatBw0XwBTEC_1EPbuNtvPXu2PS4AAjolAAKZTWBWoAcyRirY-CA9BA",
     name: "CAPCUT ULTRA Pro",

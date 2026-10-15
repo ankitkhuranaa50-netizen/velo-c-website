@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "INSHOT PREMIUM",
+          rating: "4.6",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=inshot",
+          description: "InShot is a user-friendly video and photo editing app that lets you trim, merge, add music, and create stunning visuals effortlessly.",
+          logo: "/inshot.jpg",
+        },
+        {
           name: "CAPCUT ULTRA Pro",
           rating: "3.9",
           downloadUrl: "https://t.me/VeloCFilesBot?start=capcut",
