@@ -1571,6 +1571,12 @@ export default function App() {
         // ▲▲▲ Add more { name: '...', rating: '...' } lines here for more slots ▲▲▲
       ],
     },
+    editing: {
+      title: '🛠️ AI Editing Tools',
+      items: [
+        // ▲▲▲ Add more { name: '...', rating: '...' } lines here for more slots ▲▲▲
+      ],
+    },
   };
 
   const openDownload = (url: string) => {
@@ -2263,9 +2269,9 @@ export default function App() {
             <CategoryCard
               emoji="🛠️"
               title="AI Editing Tools"
-              description="Premium unlocked video and photo editing apps."
+              description="Best free video and photo editing apps."
               buttonLabel="Open Editing Hub"
-              onClick={() => handleCardClick('🛠️ AI Editing Tools')}
+              onClick={() => openCategoryHub('editing')}
             />
             <CategoryCard
               emoji="🎬"
