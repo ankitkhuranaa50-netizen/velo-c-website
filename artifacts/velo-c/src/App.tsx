@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "REMINI PREMIUM",
+          rating: "3.7",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=remini",
+          description: "Remini is an AI-powered photo and video enhancer that restores blurry, low‑quality, or old images into sharp, high‑definition results. It uses advanced deep‑learning models to upscale, unblur, and improve details with one‑tap simplicity",
+          logo: "/remini.jpg",
+        },
+        {
           name: "INSHOT PREMIUM",
           rating: "4.6",
           downloadUrl: "https://t.me/VeloCFilesBot?start=inshot",

@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "remini": {
+    file_id: "BQACAgUAAxkBAAM3atDYfWFhSmm3D4pmSZudpWOvcBcAAv0fAAKgkoBVDAYSql3DRvc9BA",
+    name: "REMINI PREMIUM",
+    version: "3.7.1427.202524270",
+    size: "223.7MB",
+  },
   "inshot": {
     file_id: "BQACAgUAAxkBAAMyatCXeCGpOYa_JnzEvupMkTCdOPUAAtokAAKgeAhW26XSV6W-rws9BA",
     name: "INSHOT PREMIUM",
