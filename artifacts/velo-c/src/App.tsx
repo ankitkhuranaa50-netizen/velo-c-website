@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "LIGHTROOM PREMIUM",
+          rating: "4.3",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=lightroom",
+          description: "Adobe Lightroom is a powerful photo editing software designed for enhancing, color grading, and organizing high-quality images. It allows both beginners and professional photographers to easily adjust lighting, apply custom presets, and refine photo details.",
+          logo: "/lightroom.jpg",
+        },
+        {
           name: "REMINI PREMIUM",
           rating: "3.7",
           downloadUrl: "https://t.me/VeloCFilesBot?start=remini",

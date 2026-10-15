@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "lightroom": {
+    file_id: "BQACAgUAAxkBAAM5atDbv6UNS08PrCCtwLT-xyvQQEAAAu8oAAJWkQABVT2crpHDzUt8PQQ",
+    name: "LIGHTROOM PREMIUM",
+    version: "v11.5.10",
+    size: "156.7MB",
+  },
   "remini": {
     file_id: "BQACAgUAAxkBAAM3atDYfWFhSmm3D4pmSZudpWOvcBcAAv0fAAKgkoBVDAYSql3DRvc9BA",
     name: "REMINI PREMIUM",
