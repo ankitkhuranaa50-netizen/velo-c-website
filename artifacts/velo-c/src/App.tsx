@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "PICSART PRO ( UNLOCKED ALL )",
+          rating: "4.1",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=picsart",
+          description: "Picsart is an all-in-one photo and video editing app designed for creating social media graphics, collages, and digital art. It offers easy-to-use creative tools like AI background removal, artistic filters, custom stickers, and text overlays.",
+          logo: "/picsart.jpg",
+        },
+        {
           name: "LIGHTROOM PREMIUM",
           rating: "4.3",
           downloadUrl: "https://t.me/VeloCFilesBot?start=lightroom",

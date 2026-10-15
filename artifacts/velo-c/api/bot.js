@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "picsart": {
+    file_id: "BQACAgUAAxkBAAM7atDgPo6_gIlX8IGjp3a2bpJFKN0AAqAdAAJ7nYFWLk1JleqK2j89BA",
+    name: "PICSART PRO ( UNLOCKED ALL )",
+    version: "v30.2.4",
+    size: "81.1MB",
+  },
   "lightroom": {
     file_id: "BQACAgUAAxkBAAM5atDbv6UNS08PrCCtwLT-xyvQQEAAAu8oAAJWkQABVT2crpHDzUt8PQQ",
     name: "LIGHTROOM PREMIUM",
