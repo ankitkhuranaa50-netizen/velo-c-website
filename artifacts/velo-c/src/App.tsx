@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "VN EDITOR premium",
+          rating: "4.6",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=vn-editor",
+          description: "VN (also known as VN Video Editor or VlogNow) is an all‑in‑one editing app designed for TikTok, Instagram Reels, YouTube Shorts, and long‑form video creation. It is free to use and does not add a watermark",
+          logo: "/vn-editor.jpg",
+        },
+        {
           name: "PICSART PRO ( UNLOCKED ALL )",
           rating: "4.1",
           downloadUrl: "https://t.me/VeloCFilesBot?start=picsart",

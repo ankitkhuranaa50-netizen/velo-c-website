@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "vn-editor": {
+    file_id: "BQACAgUAAxkBAAM9atGv6_67dcykMGx76qmK8LMDIC4AAvgmAAK1JDFWP7l-6U8j7XI9BA",
+    name: "VN EDITOR premium",
+    version: "v2.22.0",
+    size: "339.1MB",
+  },
   "picsart": {
     file_id: "BQACAgUAAxkBAAM7atDgPo6_gIlX8IGjp3a2bpJFKN0AAqAdAAJ7nYFWLk1JleqK2j89BA",
     name: "PICSART PRO ( UNLOCKED ALL )",
