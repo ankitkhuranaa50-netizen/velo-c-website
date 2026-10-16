@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "AI CHATBOT ASSISTANT",
+          rating: "3.3",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=ai-chatbot-pro",
+          description: "An AI chatbot assistant app is an intelligent application designed to answer questions, complete tasks, and hold human-like conversations using artificial intelligence. It helps streamline daily activities, improve productivity, and provide instant 24/7 support across various personal and professional tasks.",
+          logo: "/ai-chatbot-pro.jpg",
+        },
+        {
           name: "VN EDITOR premium",
           rating: "4.6",
           downloadUrl: "https://t.me/VeloCFilesBot?start=vn-editor",

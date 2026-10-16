@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "ai-chatbot-pro": {
+    file_id: "BQACAgUAAxkBAAM_atHklwN8Wbtz7cnFkG7D1QABuskrAALFKgACGfFQVCCgtlsVDoa9PQQ",
+    name: "AI CHATBOT ASSISTANT",
+    version: "v126.0",
+    size: "124.0MB",
+  },
   "vn-editor": {
     file_id: "BQACAgUAAxkBAAM9atGv6_67dcykMGx76qmK8LMDIC4AAvgmAAK1JDFWP7l-6U8j7XI9BA",
     name: "VN EDITOR premium",
