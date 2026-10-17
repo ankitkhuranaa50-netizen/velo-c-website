@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "HYPIC PREMIUM",
+          rating: "4.0",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=hypic",
+          description: "Hypic is the international version of ByteDance’s photo editing app Xingtu, launched in late 2022 to target the global AI photo-editing market",
+          logo: "/hypic.jpg",
+        },
+        {
           name: "FILMORA PREMIUM",
           rating: "3.9",
           downloadUrl: "https://t.me/VeloCFilesBot?start=filmora",

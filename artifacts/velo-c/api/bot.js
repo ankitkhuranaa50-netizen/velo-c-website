@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "hypic": {
+    file_id: "BQACAgUAAxkBAANDatMeZtkn9xh0S_6fqPVaOCiqD6MAAkUiAAL7mnlU83PV2ES5Qy09BA",
+    name: "HYPIC PREMIUM",
+    version: "v7.4.0",
+    size: "232.5MB",
+  },
   "filmora": {
     file_id: "BQACAgUAAxkBAANBatMc8QM0il2RAZYb8Zarpy20m8IAAjcYAAJCAAHhVIErd_4vo8ERPQQ",
     name: "FILMORA PREMIUM",
