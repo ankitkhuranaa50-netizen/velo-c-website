@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "filmora": {
+    file_id: "BQACAgUAAxkBAANBatMc8QM0il2RAZYb8Zarpy20m8IAAjcYAAJCAAHhVIErd_4vo8ERPQQ",
+    name: "FILMORA PREMIUM",
+    version: "v15.0.01",
+    size: "211.9MB",
+  },
   "ai-chatbot-pro": {
     file_id: "BQACAgUAAxkBAAM_atHklwN8Wbtz7cnFkG7D1QABuskrAALFKgACGfFQVCCgtlsVDoa9PQQ",
     name: "AI CHATBOT ASSISTANT",

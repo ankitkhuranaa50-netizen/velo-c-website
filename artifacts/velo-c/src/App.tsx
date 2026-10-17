@@ -1575,6 +1575,13 @@ export default function App() {
       title: '🛠️ AI Editing Tools',
       items: [
         {
+          name: "FILMORA PREMIUM",
+          rating: "3.9",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=filmora",
+          description: "Filmora is an easy‑to‑use video editing software designed for beginners and creators, offering a wide range of effects and tools. It helps users edit videos quickly with a simple interface and professional‑looking results.",
+          logo: "/filmora.jpg",
+        },
+        {
           name: "AI CHATBOT ASSISTANT",
           rating: "3.3",
           downloadUrl: "https://t.me/VeloCFilesBot?start=ai-chatbot-pro",
