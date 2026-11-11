@@ -1,5 +1,11 @@
 // VELO BOT MENU v1 (FILES neeche scripts se apne aap update hoti hai, haath se mat badalna)
 const FILES = {
+  "descenders": {
+    file_id: "BQACAgIAAxkBAANHavRmUfYWx0kdZtlqscWJC1BRHUoAAnykAAJq9-hIvYd96eFdKro9BA",
+    name: "DESCENDERS MOD APK",
+    version: "v1.10.20",
+    size: "1.66GB",
+  },
   "hypic": {
     file_id: "BQACAgUAAxkBAANDatMeZtkn9xh0S_6fqPVaOCiqD6MAAkUiAAL7mnlU83PV2ES5Qy09BA",
     name: "HYPIC PREMIUM",

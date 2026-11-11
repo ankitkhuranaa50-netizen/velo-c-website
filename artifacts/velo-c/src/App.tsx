@@ -143,6 +143,13 @@ export default function App() {
       title: '🎮 Gaming APKs & Mods',
       items: [
         {
+          name: "DESCENDERS MOD APK",
+          rating: "3.3",
+          downloadUrl: "https://t.me/VeloCFilesBot?start=descenders",
+          description: "In Descenders Mod APK, pick powerful bikes and freeride dangerous tracks to build your team’s reputation.Winning races earns cash, bonuses, and exclusive perks that help your team dominate.Use the rewards to unlock upgraded bikes and stylish gear, outshine rivals, and show off your skills.",
+          logo: "/descenders.jpg",
+        },
+        {
           name: "Cube Run",
           rating: "—",
           downloadUrl: "https://f-droid.org/repo/cube.run_17.apk",
