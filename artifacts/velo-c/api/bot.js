@@ -93,23 +93,56 @@ const SUPPORT_TG = "https://t.me/Thecrackedx";
 const PAGE_SIZE = 8;
 
 const CATEGORIES = [
-  { icon: "🎮", label: "Gaming APKs & Mods", live: true },
-  { icon: "🛠️", label: "AI Editing Tools", live: false },
-  { icon: "🎬", label: "Video Resources", live: false },
-  { icon: "💎", label: "Premium Packs", live: false },
+  { icon: "🎮", label: "Gaming APKs & Mods", key: "gaming", live: true },
+  { icon: "🛠️", label: "AI Editing Tools", key: "ai", live: true },
+  { icon: "🎬", label: "Video Resources", key: "video", live: false },
+  { icon: "💎", label: "Premium Packs", key: "premium", live: false },
 ];
 
-const tg = (method, body) =>
-  fetch(`${API}/${method}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  }).catch(() => null);
+// ====================== FILES yahan paste karna (apna wala) ======================
+// Example structure (apne files is format me rakho):
+/*
+const FILES = {
+  descenders: {
+    name: "DESCENDERS MOD APK",
+    size: "1.66GB",
+    version: "v1.10.20",
+    file_id: "BQACAgUAAxkBAAI...",
+    cat: "gaming"
+  },
+  filmora: {
+    name: "FILMORA PREMIUM",
+    size: "211.9MB",
+    version: "Latest",
+    file_id: "BQACAgUAAxkBAAI...",
+    cat: "ai"
+  },
+  // baaki files...
+};
+*/
+// =================================================================================
+
+const tg = async (method, body) => {
+  try {
+    const res = await fetch(`${API}/${method}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return await res.json();
+  } catch {
+    return null;
+  }
+};
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const cleanVer = (v) => String(v || "").replace(/\.apk$/i, "").trim() || "Latest";
 const has = (k) => Object.prototype.hasOwnProperty.call(FILES, k);
-const allKeys = () => Object.keys(FILES);
+const allKeys = (cat = null) => {
+  const keys = Object.keys(FILES);
+  if (!cat) return keys;
+  return keys.filter((k) => FILES[k].cat === cat);
+};
 const norm = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 const short = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
 
@@ -124,7 +157,7 @@ const viewMenu = () => ({
     "⚡ Delivered directly in this chat\n\n" +
     "Choose an option below:",
   markup: kb([
-    [{ text: "📂 Categories", callback_data: "cats" }, { text: "📋 Game List", callback_data: "list:0" }],
+    [{ text: "📂 Categories", callback_data: "cats" }, { text: "📋 Game List", callback_data: "list:gaming:0" }],
     [{ text: "📜 Rules", callback_data: "rules" }, { text: "ℹ️ How It Works", callback_data: "help" }],
     [{ text: "🌐 Website", url: SITE }, { text: "💬 Support", callback_data: "support" }],
   ]),
@@ -135,8 +168,8 @@ const viewCategories = () => ({
   markup: kb([
     ...CATEGORIES.map((c) => [
       {
-        text: `${c.icon} ${c.label}` + (c.live ? ` (${allKeys().length})` : " · Soon"),
-        callback_data: c.live ? "list:0" : "soon",
+        text: `${c.icon} ${c.label}` + (c.live ? ` (${allKeys(c.key).length})` : " · Soon"),
+        callback_data: c.live ? `list:${c.key}:0` : "soon",
       },
     ]),
     BACK,
@@ -145,23 +178,31 @@ const viewCategories = () => ({
 
 const gameButton = (k) => [{ text: short(`${FILES[k].name} · ${FILES[k].size}`, 56), callback_data: `g:${k}` }];
 
-const viewList = (page) => {
-  const keys = allKeys();
+const viewList = (cat, page) => {
+  const keys = allKeys(cat);
+  const catInfo = CATEGORIES.find((c) => c.key === cat) || { icon: "🎮", label: "Files" };
+
   if (!keys.length) {
-    return { text: "📋 <b>Game List</b>\n\nNo games have been added yet. Please check back soon.", markup: { inline_keyboard: [BACK] } };
+    return {
+      text: `${catInfo.icon} <b>${catInfo.label}</b>\n\nNo files have been added yet in this category.`,
+      markup: { inline_keyboard: [[{ text: "📂 Categories", callback_data: "cats" }], BACK] },
+    };
   }
+
   const pages = Math.max(1, Math.ceil(keys.length / PAGE_SIZE));
   const p = Math.min(Math.max(Number.isFinite(page) ? page : 0, 0), pages - 1);
   const slice = keys.slice(p * PAGE_SIZE, p * PAGE_SIZE + PAGE_SIZE);
+
   const nav = [];
-  if (p > 0) nav.push({ text: "◀ Prev", callback_data: `list:${p - 1}` });
+  if (p > 0) nav.push({ text: "◀ Prev", callback_data: `list:${cat}:${p - 1}` });
   nav.push({ text: `${p + 1}/${pages}`, callback_data: "noop" });
-  if (p < pages - 1) nav.push({ text: "Next ▶", callback_data: `list:${p + 1}` });
+  if (p < pages - 1) nav.push({ text: "Next ▶", callback_data: `list:${cat}:${p + 1}` });
+
   return {
     text:
-      "🎮 <b>Gaming APKs &amp; Mods</b>\n" +
-      `<i>Page ${p + 1} of ${pages} · ${keys.length} games</i>\n\n` +
-      "Tap a game to receive the file.\n" +
+      `${catInfo.icon} <b>${catInfo.label}</b>\n` +
+      `<i>Page ${p + 1} of ${pages} · ${keys.length} files</i>\n\n` +
+      "Tap a file to receive it.\n" +
       "Or type a name to search.",
     markup: kb([...slice.map(gameButton), nav, [{ text: "📂 Categories", callback_data: "cats" }, ...BACK]]),
   };
@@ -178,15 +219,15 @@ const viewSearch = (q) => {
   const shown = hits.slice(0, 10);
   if (!shown.length) {
     return {
-      text: `🔎 No match found for <b>${esc(q)}</b>.\n\nTry a different name or browse the Game List.`,
-      markup: { inline_keyboard: [[{ text: "📋 Game List", callback_data: "list:0" }], BACK] },
+      text: `🔎 No match found for <b>${esc(q)}</b>.\n\nTry a different name or browse Categories.`,
+      markup: { inline_keyboard: [[{ text: "📂 Categories", callback_data: "cats" }], BACK] },
     };
   }
   return {
     text:
       `🔎 <b>${hits.length}</b> result${hits.length > 1 ? "s" : ""} for <b>${esc(q)}</b>` +
       (hits.length > shown.length ? ` (showing first ${shown.length})` : "") +
-      "\n\nTap a game to receive the file.",
+      "\n\nTap a file to receive it.",
     markup: { inline_keyboard: [...shown.map(gameButton), BACK] },
   };
 };
@@ -207,8 +248,8 @@ const viewRules = () => ({
 const viewHelp = () => ({
   text:
     "ℹ️ <b>How It Works</b>\n\n" +
-    "<b>Step 1.</b> Pick a game on the Velo C website, or browse it here (Categories or Game List).\n" +
-    "<b>Step 2.</b> Tap <b>Download</b>. The file is delivered to this chat.\n" +
+    "<b>Step 1.</b> Pick a file from Categories or search.\n" +
+    "<b>Step 2.</b> Tap the file. It is delivered to this chat.\n" +
     "<b>Step 3.</b> Open the file, allow \"Install unknown apps\" if asked, then tap Install.\n\n" +
     "<b>Requirements</b>\n" +
     "• The Telegram app\n" +
@@ -225,7 +266,7 @@ const viewSupport = () => ({
     "Found a broken file or have a question?\n\n" +
     `📧 Email: ${SUPPORT_EMAIL}\n` +
     "💬 Telegram: tap the button below\n\n" +
-    "Please include the game name and a short description of the problem.",
+    "Please include the game/file name and a short description of the problem.",
   markup: { inline_keyboard: [[{ text: "💬 Message on Telegram", url: SUPPORT_TG }], BACK] },
 });
 
@@ -240,12 +281,17 @@ const show = (chat, view) =>
 
 async function deliver(chat, key) {
   const item = FILES[key];
-  await tg("sendChatAction", { chat_id: chat, action: "upload_document" });
-  await tg("sendMessage", {
+  if (!item) return;
+
+  // Status message
+  const statusRes = await tg("sendMessage", {
     chat_id: chat,
     parse_mode: "HTML",
-    text: `⏳ Sending <b>${esc(item.name)}</b>...\nLarge files may take a moment.`,
+    text: `⏳ Sending <b>${esc(item.name)}</b>...`,
   });
+  const statusId = statusRes?.result?.message_id;
+
+  // File bhejo
   await tg("sendDocument", {
     chat_id: chat,
     document: item.file_id,
@@ -260,9 +306,14 @@ async function deliver(chat, key) {
       "3. Tap Install and enjoy.\n\n" +
       "🌐 Velo C Downloads",
     reply_markup: {
-      inline_keyboard: [[{ text: "📋 More Games", callback_data: "list:0" }, ...BACK]],
+      inline_keyboard: [[{ text: "📋 More Games", callback_data: "list:gaming:0" }, ...BACK]],
     },
   });
+
+  // Status message delete
+  if (statusId) {
+    await tg("deleteMessage", { chat_id: chat, message_id: statusId });
+  }
 }
 
 async function onMessage(msg) {
@@ -295,14 +346,14 @@ async function onMessage(msg) {
     return show(chat, viewMenu());
   }
   if (cmd === "/menu") return show(chat, viewMenu());
-  if (cmd === "/games" || cmd === "/list") return show(chat, viewList(0));
+  if (cmd === "/games" || cmd === "/list") return show(chat, viewList("gaming", 0));
   if (cmd === "/categories") return show(chat, viewCategories());
   if (cmd === "/rules") return show(chat, viewRules());
   if (cmd === "/help") return show(chat, viewHelp());
   if (cmd === "/support") return show(chat, viewSupport());
   if (cmd === "/search") {
     if (!arg) {
-      return tg("sendMessage", { chat_id: chat, text: "🔎 Type a game name after the command.\nExample: /search free fire" });
+      return tg("sendMessage", { chat_id: chat, text: "🔎 Type a name after the command.\nExample: /search free fire" });
     }
     return show(chat, viewSearch(arg));
   }
@@ -331,13 +382,18 @@ async function onCallback(cq) {
   let view = null;
   if (data === "menu") view = viewMenu();
   else if (data === "cats") view = viewCategories();
-  else if (data.startsWith("list:")) view = viewList(parseInt(data.slice(5), 10));
-  else if (data === "rules") view = viewRules();
+  else if (data.startsWith("list:")) {
+    const parts = data.split(":");
+    const cat = parts[1] || "gaming";
+    const page = parseInt(parts[2] || "0", 10);
+    view = viewList(cat, page);
+  } else if (data === "rules") view = viewRules();
   else if (data === "help") view = viewHelp();
   else if (data === "support") view = viewSupport();
 
   await answer();
   if (!view) return;
+
   if (typeof cq.message.text === "string") {
     return tg("editMessageText", {
       chat_id: chat,
@@ -362,3 +418,4 @@ export default async function handler(req, res) {
   }
   return res.status(200).send("ok");
 }
+
